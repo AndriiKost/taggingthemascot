@@ -1,0 +1,21 @@
+ul {
+    list-style-type: none;
+}
+.TeamScoreContainer {
+    border-bottom: 1px solid #000;
+}
+.label {
+    font-size: 0.7em;
+}
+.teamScoreListItem .label {
+    font-size: 1.2em;
+}
+.TeamScoreContainer li {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+}
+.sideBorder {
+    border-right: 1px solid #000;
+    margin: 10px;
+}
