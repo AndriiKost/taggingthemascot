@@ -26,11 +26,30 @@ class SignUpForm extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { ...INITIAL_STATE };
+    this.state = { ...INITIAL_STATE , teamNames: [], teamNameExisting: false};
+  }
+
+  componentDidMount() {
+    db.onceGetUsers().then( snapshot => {
+      this.state.teamNames = Object.keys(snapshot.val()).map(key => snapshot.val()[key].username.toLowerCase())
+      console.log(this.state.teamNames)
+    }
+   )
+  }
+
+  teamNameHandler = (event) => {
+    this.setState(byPropKey('username', event.target.value))
+    // Check if username exist
+    if (this.state.teamNames.includes(event.target.value.toLowerCase()) === true) {
+      this.setState({teamNameExisting: true}); 
+    } else {
+      this.setState({teamNameExisting: false})
+    }
+    console.log(this.state.teamNameExisting)
   }
 
   onSubmit = (event) => {
-    const {
+      const {
         username,
         email,
         passwordOne,
@@ -39,7 +58,7 @@ class SignUpForm extends Component {
       const {
         history,
       } = this.props;
-  
+
       auth.doCreateUserWithEmailAndPassword(email, passwordOne)
         .then(authUser => {
             console.log(authUser)
@@ -75,13 +94,14 @@ class SignUpForm extends Component {
       passwordOne !== passwordTwo ||
       passwordOne === '' ||
       email === '' ||
-      username === '';
+      username === '' || this.state.teamNameExisting;
 
     return (
+      <div>
       <form onSubmit={this.onSubmit}>
         <input
           value={username}
-          onChange={event => this.setState(byPropKey('username', event.target.value))}
+          onChange={this.teamNameHandler}
           type="text"
           placeholder="Team Name"
         />
@@ -106,9 +126,10 @@ class SignUpForm extends Component {
         <button disabled={isInvalid} type="submit">
           Sign Up
         </button>
-
         { error && <p>{error.message}</p> }
       </form>
+      {this.state.teamNameExisting ? <h2>Team Name Already exists, please try another one.</h2> : null}
+      </div>
     );
   }
 }
