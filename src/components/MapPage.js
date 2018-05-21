@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import { db, auth } from '../firebase';
+import { db } from '../firebase';
 
 import MapContainer from './Map/MapComponent';
+import CheckIn from './CheckIn';
 
 class MapPage extends Component {
     render() {
         return (
             <div className='Map'>
-                <button onClick={db.updateScore}>Check in</button>
+                
                 {/* <MapContainer /> */}
+                <CheckIn />
             </div>
         );
     }

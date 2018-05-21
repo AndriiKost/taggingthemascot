@@ -175,3 +175,8 @@ body {
   position: absolute;
   top: 0;
 }
+
+.funClass {
+  color: red;
+  font-family: cursive;
+}

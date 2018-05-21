@@ -38,7 +38,7 @@ const AccountPage = ({ authUser }) =>
       {/* <h4 className='accountInfo'>  Account: {authUser.email} </h4> */}
     {/* <div> */}
     <SignOutButton />
-      <h2> Add your event </h2>
+      <h2>It's more <span className='funClass'>fun</span> to participate with your friend</h2>
       <Events />
     {/* </div> */}
     <div className="accountSettings">
