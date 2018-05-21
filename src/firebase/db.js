@@ -9,7 +9,9 @@ export const doCreateUser = (uid, username, email) =>
     email,
     profile: {
       visited: 0,
-      members: 1,
+      members: {
+        participants: 1
+      }
     },
   });
 
@@ -43,10 +45,11 @@ export const updateImageURL = (url) =>
   });
 
 export const addEvent = (banner, event_name, price) =>
-db.ref(`users/` + auth.currentUser.uid + '/events/' + Math.floor(Math.random() * 958184759832) + 1 ).set({
+db.ref(`users/` + auth.currentUser.uid + '/profile/members').set({
     banner,
     event_name,
-    price,
+    participants: 2
+    // price,
   });
 
 // Other Entity APIs ...

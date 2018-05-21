@@ -96,7 +96,7 @@ body {
 /* Account Settings */
 .accountSettings {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 .accountSection {
   border: 1px solid #ECE9E6;
@@ -141,33 +141,34 @@ body {
 }
 
 /* Account Add Event Section */
-.eventAddSection {
+.gradientSection {
   padding-top: 10px;
   background: #ECE9E6;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to left, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to left, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
   text-align: center;
+  height: 95vh;
 }
-.eventAddSection form {
+.gradientSection form {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 1em;
   padding: 0 20% 5% 20%;
 }
-.eventAddSection form input, .eventAddSection form button {
+.gradientSection form input, .gradientSection form button {
   height: 30px;
   padding: 5px;
   font-size: 1em;
   border: 1px solid #eee;
   border-radius: 7px;
 }
-.eventAddSection form button {
+.gradientSection form button {
   background-color: #595959;
   color: #fff;
   cursor: pointer;
   height: 45px;
 }
-.eventAddSection form button:hover {
+.gradientSection form button:hover {
   background-color: #323232;
 }
 .accountInfo {

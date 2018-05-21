@@ -42,30 +42,30 @@ class Events extends Component {
       error,
     } = this.state;
 
-    const isInvalid = banner === '' ||  event_name === '' || price === '';
+    const isInvalid = banner === '' ||  event_name === '';// || price === ''
 
     return (
       <form onSubmit={this.onSubmit}>
         <input
-          value={banner}
-          onChange={event => this.setState(byPropKey('banner', event.target.value))}
-          type="url"
-          placeholder="Image URL"
-        />
-        <input
           value={event_name}
           onChange={event => this.setState(byPropKey('event_name', event.target.value))}
           type="text"
-          placeholder="Event Name"
+          placeholder="Full Name"
         />
         <input
+          value={banner}
+          onChange={event => this.setState(byPropKey('banner', event.target.value))}
+          type="email"
+          placeholder="Email"
+        />
+        {/* <input
           value={price}
           onChange={event => this.setState(byPropKey('price', event.target.value))}
           type="text"
           placeholder="Event Price"
-        />
+        /> */}
         <button disabled={isInvalid} type="submit">
-          Add Event
+          Add Teammate
         </button>
 
         { error && <p>{error.message}</p> }

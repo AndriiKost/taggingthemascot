@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { auth } from '../firebase';
 
 const PasswordForgetPage = () =>
-  <div>
+  <div className='gradientSection'>
     <h1>PasswordForget</h1>
     <PasswordForgetForm />
   </div>

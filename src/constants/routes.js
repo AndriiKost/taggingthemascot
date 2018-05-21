@@ -6,3 +6,4 @@ export const HOME = '/home';
 export const ACCOUNT = '/account';
 export const MAP = '/map';
 export const PASSWORD_FORGET = '/pw-forget';
+export const RULES_PAGE = '/rules';

@@ -13,6 +13,7 @@ import LeadersPage from './LeadersPage';
 import AccountPage from './Account';
 import MapPage from './MapPage';
 import BuckyHeader from '../containers/Header';
+import RulesPage from './RulesPage';
 
 import * as routes from '../constants/routes';
 
@@ -29,6 +30,8 @@ const App = () =>
       <Route exact path={routes.LEADERS} component={() => <LeadersPage />} />
       <Route exact path={routes.ACCOUNT} component={() => <AccountPage />} />
       <Route exact path={routes.MAP} component={() => <MapPage />} />
+      <Route exact path={routes.RULES_PAGE} component={() => <RulesPage />} />
+      
     </div>
   </Router>
 

@@ -37,7 +37,7 @@ class LeadersPage extends Component {
       // Update state with Firebase Data
       dataArr.push({teamScore: Object.keys(users[key].profile.visited).length,
       teamName: users[key].username,
-      partisipants: users[key].profile.members})
+      partisipants: users[key].profile.members.participants})
     )
 
     const newArray = dataArr.sort(function(a, b){
@@ -54,7 +54,8 @@ class LeadersPage extends Component {
     const { users } = this.props;
     const h1Style = {
       textAlign: 'center',
-      marginTop: '10px'
+      marginTop: '10px',
+      paddingTop: '10px'
     };
 
     const teamList = ( ) =>
@@ -77,7 +78,7 @@ class LeadersPage extends Component {
       </div>
 
     return (
-      <div>
+      <div className='gradientSection'>
         <h1 style={h1Style}><span className="sideBorder"></span>Real Time Team Scores<span className="sideBorder"></span></h1>
         {/* { !!users && <UserList users={users} /> } */}
         { teamList() }

@@ -24,6 +24,7 @@ const NavigationNonAuth = () =>
     <li><Link to={routes.SIGN_IN}>Sign In</Link></li>
     <li><Link to={routes.LANDING}>Home</Link></li>
     <li><Link to={routes.LEADERS}>Leaders</Link></li>
+    <li><Link to={routes.RULES_PAGE}>Rules</Link></li>
   </ul>
 
 const mapStateToProps = (state) => ({
