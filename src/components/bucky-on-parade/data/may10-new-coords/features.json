@@ -1,0 +1,109 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gemütlichkeit"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.3843150138855,
+          43.07397819495721
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sconnie B. Goode"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.38419699668884,
+          43.07485986460653
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Every Veteran is a Story"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.38421308994292,
+          43.074577731698845
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bucky Energized!"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.38211560249329,
+          43.07279869705801
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "When You Say Wisconsin, You've Said It All"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.38539862632751,
+          43.075792461363854
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vial Caps for a Cure"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.38497483730316,
+          43.07584731955464
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "...And On Wisconsin!"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.39692139625548,
+          43.07019274912822
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bucky Alvarez"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.41167891025543,
+          43.0689739895886
+        ]
+      }
+    }
+  ]
+}

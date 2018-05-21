@@ -14,18 +14,25 @@ export const doCreateUser = (uid, username, email) =>
   });
 
   export const updateScore = ( score ) =>  {
-    // // A post entry.
-    // let buckyScore = db.ref(`users/` + auth.currentUser.uid + '/profile').once('value');
-  
     // Get a key for a new Post.
-    var newScore = db.ref(`users/` + auth.currentUser.uid + '/profile/visited').push(1)
-    console.log(newScore)
-    // Write the new post's data simultaneously in the posts list and the user's post list.
-    // var updates = {};
-    // updates['/posts/' + newPostKey] = postData;
-    // updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+    // var newScore = db.ref(`users/` + auth.currentUser.uid + '/profile/visited').push(1)
+    // console.log(newScore)
 
+  var postData = {
+    date: new Date()
+  };
+
+  // Get a key for a new Post.
+  var newPostKey = db.ref().child('posts').push().key;
+
+  // Write the new post's data simultaneously in the posts list and the user's post list.
+  var updates = {};
+  updates['users/' + auth.currentUser.uid + '/profile/visited/' + newPostKey] = postData;
+
+  return db.ref().update(updates);
   }
+
+
 
 export const onceGetUsers = () =>
   db.ref('users').once('value');
