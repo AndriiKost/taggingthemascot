@@ -1681,23 +1681,6 @@
           43.074119262953495
         ]
       }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "NA",
-        "name": "Golden Bucky",
-        "sponsor": "Madison Area Sports Commission Board of Directors",
-        "artistName": "",
-        "locationName": "",
-        "address": "",
-        "imgFileName": "Golden-Bucky_Front.jpg",
-        "link": "https://buckyonparade.com/product/golden-bucky/"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": []
-      }
     }
   ]
 }

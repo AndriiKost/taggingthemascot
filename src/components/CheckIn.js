@@ -1,6 +1,7 @@
 import React from 'react';
 import {geolocated} from 'react-geolocated';
 import { db } from '../firebase';
+import * as routes from '../constants/routes';
 
 import { buckies } from './data'
  
@@ -34,22 +35,22 @@ class CheckIn extends React.Component {
       Math.sin(dLon/2) * Math.sin(dLon/2);
       let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
       let d = R * c;
-      d * 1000 // distance between objects in meters
-      console.log('You are ' + Math.round((d * 1000 * 3.2808)) + ' feet away from ' + buckyName + ', move closer')
-      return d * 1000
+      return Math.round((d * 1000 * 3.2808));
   }
 
     initialCheckInHandler = () => {
         this.setState({checkIn: true})
-        // db.updateScore();
-        // closest bucky
-        buckies.features.map(el => {
-          this.findClosestBucky(this.props.coords.latitude,this.props.coords.longitude, el.geometry.coordinates[1], el.geometry.coordinates[0], el.properties.name);
+        // find closest bucky
+        const closest = buckies.features.reduce((lowest, cur) => {
+          const distanceFunc = this.findClosestBucky(this.props.coords.latitude,this.props.coords.longitude, cur.geometry.coordinates[1], cur.geometry.coordinates[0], cur.properties.name);
+          return distanceFunc > lowest ? lowest : distanceFunc;
         })
-        // Bucky
-        this.measure(this.props.coords.latitude,this.props.coords.longitude, 43.0967271, -89.3436674)
-        // Office
-        // this.measure(this.props.coords.latitude,this.props.coords.longitude, 43.0991557, -89.3110947)
+        
+        closest < 16 ? ( db.updateScore() ) : this.setState({distance: 'Can not find any Bucky near you. You are ' + closest + ' feet away'}) ;
+    }
+
+    refreshLocation = () => {
+      window.location.reload();
     }
 
   render() {
@@ -58,7 +59,7 @@ class CheckIn extends React.Component {
       : !this.props.isGeolocationEnabled
         ? <div>Geolocation is not enabled</div>
         : this.props.coords
-          ? !this.state.checkIn ? <button onClick={this.initialCheckInHandler}>Check in</button> : <button onClick={this.initialCheckInHandler}>New Check in</button>
+          ? !this.state.checkIn ? <button onClick={this.initialCheckInHandler}>Check in</button> : <button onClick={this.refreshLocation}> Get New Location </button>
           : <div>Getting the location data&hellip; </div>;
 
           return (
