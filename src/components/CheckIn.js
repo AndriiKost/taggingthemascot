@@ -4,18 +4,32 @@ import { db } from '../firebase';
  
 class CheckIn extends React.Component {
     state = {
-        checkIn: false
+        checkIn: false,
+        distance: ''
     }
     
     componentDidMount = () => {
         this.setState({checkIn: false})
-        console.log(this.state.checkIn)
     } 
 
-    checkinHandler = () => {
+    measure = (lat1, lon1, lat2, lon2) => {  // generally used geo measurement function
+        var R = 6378.137; // Radius of earth in KM
+        var dLat = lat2 * Math.PI / 180 - lat1 * Math.PI / 180;
+        var dLon = lon2 * Math.PI / 180 - lon1 * Math.PI / 180;
+        var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+        Math.sin(dLon/2) * Math.sin(dLon/2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        var d = R * c;
+        console.log(d * 1000)
+        this.setState({distance: d * 1000}); // meters
+    }
+
+    initialCheckInHandler = () => {
         this.setState({checkIn: true})
         // db.updateScore();
-        console.log('checkIn pressed; state ='+this.state.checkIn)
+        console.log(geolocated.getCurrentPosition)
+        this.measure(this.props.coords.latitude,this.props.coords.longitude, 43.098782, -89.310372)
     }
 
   render() {
@@ -24,18 +38,13 @@ class CheckIn extends React.Component {
       : !this.props.isGeolocationEnabled
         ? <div>Geolocation is not enabled</div>
         : this.props.coords
-          ? <table>
-            <tbody>
-              <tr><td>latitude</td><td>{this.props.coords.latitude}</td></tr>
-              <tr><td>longitude</td><td>{this.props.coords.longitude}</td></tr>
-            </tbody>
-          </table>
+          ? <button onClick={this.initialCheckInHandler}>Check in</button>
           : <div>Getting the location data&hellip; </div>;
 
           return (
             <div>
-                <button onClick={this.checkinHandler}>Check in</button>
-                {this.state.checkIn ? coordinates : null}
+                {coordinates}
+                <h1>{this.state.distance}</h1>
             </div>
           )
   }
@@ -43,7 +52,7 @@ class CheckIn extends React.Component {
  
 export default geolocated({
   positionOptions: {
-    enableHighAccuracy: false,
+    enableHighAccuracy: true,
   },
-  userDecisionTimeout: 5000,
+  userDecisionTimeout: 10000,
 })(CheckIn);
