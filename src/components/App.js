@@ -14,6 +14,7 @@ import AccountPage from './Account';
 import MapPage from './MapPage';
 import BuckyHeader from '../containers/Header';
 import RulesPage from './RulesPage';
+import Checklist from './Checklist';
 
 import * as routes from '../constants/routes';
 
@@ -31,6 +32,7 @@ const App = () =>
       <Route exact path={routes.ACCOUNT} component={() => <AccountPage />} />
       <Route exact path={routes.MAP} component={() => <MapPage />} />
       <Route exact path={routes.RULES_PAGE} component={() => <RulesPage />} />
+      <Route exact path={routes.CHECKLIST} component={() => <Checklist />} />
       
     </div>
   </Router>

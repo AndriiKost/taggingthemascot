@@ -115,12 +115,6 @@ class Root extends React.Component {
               deselectBucky={this.deselectBucky}
               selectedBucky={this.state.selectedBucky}
             />
-
-            { /* bcycle stations */
-              (this.state.showBcycleStations)
-                ? <Bcycles />
-                : null
-            }
           </BuckyMap>
         </div>
 
