@@ -67,4 +67,4 @@ class Suggestion extends React.Component {
   }
 }
 
-module.exports = Suggestion
+export default Suggestion

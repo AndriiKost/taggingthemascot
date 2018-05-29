@@ -12,4 +12,4 @@ var colors = {
   iconRed: "#E73023"
 }
 
-module.exports = colors
+export default colors

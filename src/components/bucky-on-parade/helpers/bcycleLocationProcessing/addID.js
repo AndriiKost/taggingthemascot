@@ -5,4 +5,4 @@ function addID(locations) {
   }
 }
 
-module.exports = addID
+export default addID

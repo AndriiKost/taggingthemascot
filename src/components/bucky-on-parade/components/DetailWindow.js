@@ -179,4 +179,4 @@ class DetailWindow extends React.Component {
   }
 }
 
-module.exports = DetailWindow
+export default DetailWindow

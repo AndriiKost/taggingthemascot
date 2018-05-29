@@ -53,4 +53,4 @@ class BcycleMarker extends React.Component {
   }
 }
 
-module.exports = BcycleMarker
+export default BcycleMarker

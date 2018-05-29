@@ -7,4 +7,4 @@ function hyphenate(str) {
   return str
 }
 
-module.exports = hyphenate
+export default hyphenate

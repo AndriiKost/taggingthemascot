@@ -30,4 +30,4 @@ class Bcycles extends React.Component {
   }
 }
 
-module.exports = Bcycles
+export default Bcycles

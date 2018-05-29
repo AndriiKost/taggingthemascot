@@ -61,4 +61,4 @@ class Buckies extends React.Component {
   }
 }
 
-module.exports = Buckies
+export default Buckies

@@ -41,9 +41,19 @@ class CheckIn extends React.Component {
     initialCheckInHandler = () => {
         this.setState({checkIn: true})
         // find closest bucky
-        const closest = buckies.features.reduce((lowest, cur) => {
-          const distanceFunc = this.findClosestBucky(this.props.coords.latitude,this.props.coords.longitude, cur.geometry.coordinates[1], cur.geometry.coordinates[0], cur.properties.name);
-          return distanceFunc > lowest ? lowest : distanceFunc;
+        db.getCheckList().then( snapshot =>
+          console.log(snapshot.val()))
+
+        const closest = buckies.buckies.features.reduce((lowest, cur) => {
+          if (cur.geometry.coordinates !== undefined) {
+            const distanceFunc = this.findClosestBucky(this.props.coords.latitude,this.props.coords.longitude, cur.geometry.coordinates[1], cur.geometry.coordinates[0], cur.properties.name);
+            // check if lowest is same as rendered
+            console.log(lowest)
+            return distanceFunc > lowest ? lowest : distanceFunc;
+          } else {
+            return lowest
+          }
+          
         })
         
         closest < 16 ? ( db.updateScore() ) : this.setState({distance: 'Can not find any Bucky near you. You are ' + closest + ' feet away'}) ;

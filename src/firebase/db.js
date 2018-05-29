@@ -1,5 +1,5 @@
 import { db, auth } from './firebase';
-
+import { buckies } from '../components/data'
 // User API
 
 export const doCreateUser = (uid, username, email) =>
@@ -11,7 +11,8 @@ export const doCreateUser = (uid, username, email) =>
       visited: 0,
       members: {
         participants: 1
-      }
+      },
+      checklist: buckies
     },
   });
 
@@ -43,6 +44,12 @@ export const updateImageURL = (url) =>
   db.ref(`users/` + auth.currentUser.uid + '/profile').set({
     profile_picture : url
   });
+
+export const getCheckList = () => 
+  db.ref('users/' + auth.currentUser.uid +'/profile/checklist/buckies/features').once('value')
+
+  export const getBuckies = () => 
+  db.ref('users/' + auth.currentUser.uid +'/profile/checklist/buckies/features').once('value')
 
 export const addEvent = (banner, event_name, price) =>
 db.ref(`users/` + auth.currentUser.uid + '/profile/members').set({

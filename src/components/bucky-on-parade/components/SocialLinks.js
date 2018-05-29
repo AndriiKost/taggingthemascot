@@ -48,4 +48,4 @@ class SocialLinks extends React.Component {
   }
 }
 
-module.exports = SocialLinks
+export default SocialLinks

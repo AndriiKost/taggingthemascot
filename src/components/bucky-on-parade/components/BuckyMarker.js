@@ -29,4 +29,4 @@ class BuckyMarker extends React.Component {
   }
 }
 
-export default BuckyMarker;
+export default BuckyMarker

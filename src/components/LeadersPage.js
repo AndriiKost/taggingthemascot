@@ -52,11 +52,6 @@ class LeadersPage extends Component {
 
   render() {
     const { users } = this.props;
-    const h1Style = {
-      textAlign: 'center',
-      marginTop: '10px',
-      paddingTop: '10px'
-    };
 
     const teamList = ( ) =>
     <div>
@@ -79,7 +74,7 @@ class LeadersPage extends Component {
 
     return (
       <div className='gradientSection'>
-        <h1 style={h1Style}><span className="sideBorder"></span>Real Time Team Scores<span className="sideBorder"></span></h1>
+        <h1 className='LeadersTitle'><span className="sideBorder"></span>Real Time Team Scores<span className="sideBorder"></span></h1>
         {/* { !!users && <UserList users={users} /> } */}
         { teamList() }
       </div>

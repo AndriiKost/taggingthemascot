@@ -21,4 +21,4 @@ function merge(params) {
   console.log(JSON.stringify(buckies))
 }
 
-module.exports = merge
+export default merge

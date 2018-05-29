@@ -29,4 +29,4 @@ function turnArrayOfBuckiesIntoFeatureCollection(arr) {
   }
 }
 
-module.exports = turnArrayOfBuckiesIntoFeatureCollection
+export default turnArrayOfBuckiesIntoFeatureCollection

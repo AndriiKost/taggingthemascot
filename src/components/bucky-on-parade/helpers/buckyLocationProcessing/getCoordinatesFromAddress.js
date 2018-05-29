@@ -16,4 +16,4 @@ async function getCoordinatesFromAddress(bucky) {
     })
 }
 
-module.exports = getCoordinatesFromAddress
+export default getCoordinatesFromAddress

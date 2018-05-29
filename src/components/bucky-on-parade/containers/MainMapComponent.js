@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 import axios from 'axios'
 import { BuckyMap, SideMenu, DetailWindow } from '../components'
 import { Buckies, Bcycles } from '../mapLayers'
-import { googleMapStyles, colors } from '../styles'
+// import { googleMapStyles, colors } from '../styles'
 
-class Root extends React.Component {
+class MainMapComponent extends Component {
   constructor(props) {
     super(props)
 
@@ -94,11 +94,9 @@ class Root extends React.Component {
   }
 
   render() {
-    return(
-      <div style={{width: '100%', height: '100%'}}>
-
-        { /* bucky map */ }
-        <div style={{width: '100%', height: '100%'}}>
+    return( 
+        <div>
+          <h1>hi</h1>
           <BuckyMap
             deselectBucky={this.deselectBucky}
             onMapMounted={this.onMapMounted}
@@ -108,56 +106,27 @@ class Root extends React.Component {
             loadingElement={<div style={{ height: `100%` }} />}
             containerElement={<div style={{ height: `100%` }} />}
             mapElement={<div style={{ height: `100%` }} />}
-          >
-            { /* bucky statues */ }
-            <Buckies
+            >
+
+            {/* <Buckies
               selectBucky={this.selectBucky}
               deselectBucky={this.deselectBucky}
               selectedBucky={this.state.selectedBucky}
-            />
+            /> */}
           </BuckyMap>
-        </div>
 
-        { /* side menu */ }
-        <div
-          style={(this.state.isMobile)
-            ? {position: 'absolute', left: 0, width: '100%', height: '100%' /* bottom: handled by _sideMenu.scss */}
-            : {position: 'absolute', top: 0, bottom: 0, width: '28%', height: '100%' /* left: handled by _sideMenu.scss */}
-          }
-          className={(this.state.isMobile)
-            ? ['side-menu-wrap-mobile', this.state.sideMenuIsOpen && 'visible'].join(' ')
-            : ['side-menu-wrap', this.state.sideMenuIsOpen && 'visible'].join(' ')
-          }
-        >
-          <SideMenu
-            onToggleSideMenu={this.onToggleSideMenu}
-            isMobile={this.state.isMobile}
-            isOpen={this.state.sideMenuIsOpen}
-            panTo={this.panTo}
-            selectBucky={this.selectBucky}
-            showBcycleStations={this.state.showBcycleStations}
-            onToggleBycles={this.onToggleBycles}
-          />
-        </div>
-
-        { /* bucky detail window */
-          (this.state.selectedBucky)
-          ? <div
-              style={(this.state.isMobile)
-                ? {position: 'absolute', top: 0, right: 0, width: '100%'}
-                : {position: 'absolute', top: 9, right: 80, width: 300}}
-              >
+          {/* {(this.state.selectedBucky)
+          ? <div>
               <DetailWindow
                 isMobile={this.state.isMobile}
                 bucky={this.state.selectedBucky}
                 onExit={this.deselectBucky}
               />
             </div>
-          : null
-        }
+          : null} */}
       </div>
     )
   }
 }
 
-export default Root;
+export default MainMapComponent

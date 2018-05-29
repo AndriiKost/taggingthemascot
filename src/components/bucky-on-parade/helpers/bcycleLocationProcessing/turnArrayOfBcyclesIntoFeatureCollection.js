@@ -26,4 +26,4 @@ function turnArrayOfBcyclesIntoFeatureCollection(arr) {
   }
 }
 
-module.exports = turnArrayOfBcyclesIntoFeatureCollection
+export default turnArrayOfBcyclesIntoFeatureCollection

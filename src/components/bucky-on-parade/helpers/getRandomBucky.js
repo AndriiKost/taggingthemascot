@@ -5,4 +5,4 @@ function getRandomBucky() {
   return bucky
 }
 
-module.exports = getRandomBucky
+export default getRandomBucky

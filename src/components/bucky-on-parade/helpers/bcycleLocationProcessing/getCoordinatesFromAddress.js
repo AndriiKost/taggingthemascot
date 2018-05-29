@@ -16,4 +16,4 @@ async function getCoordinatesFromAddress(location) {
     })
 }
 
-module.exports = getCoordinatesFromAddress
+export default getCoordinatesFromAddress

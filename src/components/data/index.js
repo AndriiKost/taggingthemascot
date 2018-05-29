@@ -1,1 +1,3 @@
-exports.buckies = require('./BUCKIES.json')
+import * as buckies from './BUCKIES.json'
+
+export { buckies };

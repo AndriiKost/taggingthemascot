@@ -1,2 +1,4 @@
-exports.googleMapStyles = require('./googleMapStyles')
-exports.colors = require('./colors')
+import * as googleMapStyles from './googleMapStyles';
+import * as colors from './colors';
+
+export { googleMapStyles, colors };

@@ -69,4 +69,4 @@ var googleMapStyles = [
   }
 ]
 
-module.exports = googleMapStyles
+export default googleMapStyles

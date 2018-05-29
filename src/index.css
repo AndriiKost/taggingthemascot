@@ -97,6 +97,7 @@ body {
 .accountSettings {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  margin-bottom: 80px;
 }
 .accountSection {
   border: 1px solid #ECE9E6;
@@ -149,6 +150,9 @@ body {
   text-align: center;
   height: 95vh;
 }
+.gradientSection h2 {
+  margin-top: 10%;
+}
 .gradientSection form {
   display: grid;
   grid-template-columns: 1fr;
@@ -179,4 +183,34 @@ body {
 .funClass {
   color: red;
   font-family: cursive;
+}
+
+/* ######====== Check List =====###### */
+.Checklist {
+  padding-bottom: 80px;
+}
+
+/* #####======= SCREENS ========##### */
+@media screen and (max-width: 350px) {
+  .buckyHeader h2 {
+    font-size: 1em;
+    padding-top: 6%;
+  }
+}
+@media screen and (min-width: 351px) {
+  .buckyHeader h2 {
+    font-size: 1.2em;
+    padding-top: 4%;
+  }
+}
+@media screen and (min-width: 500px) {
+  .buckyHeader h2 {
+    font-size: 1.8em;
+    padding-top: 2%;
+  }
+}
+@media screen and (max-width: 550px) {
+  .accountSettings {
+    grid-template-columns: 1fr;
+  }
 }

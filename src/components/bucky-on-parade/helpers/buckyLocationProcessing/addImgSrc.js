@@ -8,4 +8,4 @@ function addImgSrc(bucky) {
   bucky.properties.imgFileName = imgFileName
 }
 
-module.exports = addImgSrc
+export default addImgSrc
