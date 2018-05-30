@@ -24,13 +24,13 @@ const App = () =>
     <BuckyHeader />
       <Navigation/>
 
-      <Route exact path={routes.LANDING} component={() => <LandingPage />} />
+      <Route exact path={routes.LANDING} component={() => <LandingPage />}  />
       <Route exact path={routes.SIGN_UP} component={() => <SignUpPage />} />
       <Route exact path={routes.SIGN_IN} component={() => <SignInPage />} />
       <Route exact path={routes.PASSWORD_FORGET} component={() => <PasswordForgetPage />} />
       <Route exact path={routes.LEADERS} component={() => <LeadersPage />} />
       <Route exact path={routes.ACCOUNT} component={() => <AccountPage />} />
-      <Route exact path={routes.MAP} component={() => <MapPage />} />
+      <Route exact path={routes.MAP} component={() => <MapPage />}  />
       <Route exact path={routes.RULES_PAGE} component={() => <RulesPage />} />
       <Route exact path={routes.CHECKLIST} component={() => <Checklist />} />
       

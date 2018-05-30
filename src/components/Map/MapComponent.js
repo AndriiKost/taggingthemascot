@@ -54,4 +54,13 @@ class MapComponent extends React.PureComponent {
   }
 }
 
-export default MapComponent;
+const mapStateToProps = (state) => ({
+  authUser: state.sessionState.authUser,
+});
+
+const authCondition = (authUser) => !!authUser;
+
+export default compose(
+  withAuthorization(authCondition),
+  connect(mapStateToProps)
+)(MapComponent);

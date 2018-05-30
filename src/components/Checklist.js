@@ -68,5 +68,6 @@ const mapStateToProps = (state) => ({
   
 
 export default compose(
+    withAuthorization(authCondition),
     connect(mapStateToProps, mapDispatchToProps)
     )(BuckyCheckList);
