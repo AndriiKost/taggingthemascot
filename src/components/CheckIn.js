@@ -8,7 +8,29 @@ import { buckies } from './data'
 class CheckIn extends React.Component {
     state = {
         checkIn: false,
-        distance: ''
+        distance: '',
+        buckyToRemove: '',
+        buckies: []
+    }
+
+    componentDidMount() {
+      db.getBuckies().then( snapshot =>
+        this.updateStateWithBuckiesData(snapshot.val()))
+    }
+  
+    updateStateWithBuckiesData = (buckies) => {
+      let dataArr = []
+  
+      buckies.map(el => 
+        // Update state with Firebase Data
+        dataArr.push({name: el.properties.name,
+        id: el.properties.id,
+        address: el.properties.address,
+        lat: el.geometry.coordinates[1],
+        lng: el.geometry.coordinates[0]})
+      )
+      this.state.buckies = dataArr
+      console.log('From the state ->',this.state.buckies)
     }
 
     measure = (lat1, lon1, lat2, lon2) => {  // generally used geo measurement function
@@ -20,7 +42,7 @@ class CheckIn extends React.Component {
         Math.sin(dLon/2) * Math.sin(dLon/2);
         let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         let d = R * c;
-        console.log(d * 1000)
+        // console.log(d * 1000)
         d * 1000 > 6
         ? this.setState({distance: 'You are ' + Math.round((d * 1000 * 3.2808)) + ' feet away, move closer'}) // meters
         : this.setState({distance: 'Congratulations, You have successfully taged [BUCKY_NAME]'})
@@ -40,23 +62,38 @@ class CheckIn extends React.Component {
 
     initialCheckInHandler = () => {
         this.setState({checkIn: true})
-        // find closest bucky
-        db.getCheckList().then( snapshot =>
-          console.log(snapshot.val()))
 
-        const closest = buckies.buckies.features.reduce((lowest, cur) => {
-          if (cur.geometry.coordinates !== undefined) {
-            const distanceFunc = this.findClosestBucky(this.props.coords.latitude,this.props.coords.longitude, cur.geometry.coordinates[1], cur.geometry.coordinates[0], cur.properties.name);
+        // find closest bucky
+        const closest = this.state.buckies.reduce((lowest, cur) => {
+          // if (cur.geometry.coordinates !== undefined) {
+          //   const distanceFunc = this.findClosestBucky(this.props.coords.latitude,this.props.coords.longitude, cur.geometry.coordinates[1], cur.geometry.coordinates[0], cur.properties.name);
+          //   // check if lowest is same as rendered
+          //   if (distanceFunc > lowest) {
+          //     return lowest
+          //   }  else {
+          //     return distanceFunc
+          //   }
+          //   // return lowest
+          // } else {
+          //   return lowest
+          // }
+
+          if (cur.lat !== undefined || cur.lng !== undefined) {
+            const distanceFunc = this.findClosestBucky(this.props.coords.latitude,this.props.coords.longitude, cur.lat, cur.lng, cur.id);
             // check if lowest is same as rendered
-            console.log(lowest)
-            return distanceFunc > lowest ? lowest : distanceFunc;
+            if (distanceFunc > lowest) {
+              return lowest
+            }  else {
+              // console.log('#######ALERT ===> ',cur.id)
+              this.state.buckyToRemove = parseInt(cur.id.slice(0, -1)) - 1;
+              return distanceFunc
+            }
           } else {
             return lowest
           }
-          
         })
-        
-        closest < 16 ? ( db.updateScore() ) : this.setState({distance: 'Can not find any Bucky near you. You are ' + closest + ' feet away'}) ;
+        console.log('#######ALERT ===> ',this.state.buckyToRemove)
+        closest < 16 ? ( db.updateScore(), db.removeBuckyFromTheUserList(this.state.buckyToRemove), this.setState({distance: 'Congratulations! You have tagged a bucky!'}) ) : this.setState({distance: 'Can not find any Bucky near you. You are ' + closest + ' feet away'}) ;
     }
 
     refreshLocation = () => {

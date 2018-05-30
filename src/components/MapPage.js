@@ -6,10 +6,7 @@ import { compose } from 'recompose';
 
 import AuthUserContext from './AuthUserContext';
 import withAuthorization from './withAuthorization';
-// import MainMapComponent from './bucky-on-parade/containers/MainMapComponent'
-// import MapComponent from './Map/MapComponent'
 import InitialMap from './Map/InitialMap'
-
 import CheckIn from './CheckIn';
 
 class MapPage extends Component {
@@ -17,7 +14,7 @@ class MapPage extends Component {
         return (
             <div className='Map'>
                 <CheckIn />
-                {/* <MapComponent /> */}
+                
                 <InitialMap />
             </div>
         );

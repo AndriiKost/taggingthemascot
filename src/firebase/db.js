@@ -33,9 +33,8 @@ export const doCreateUser = (uid, username, email) =>
   updates['users/' + auth.currentUser.uid + '/profile/visited/' + newPostKey] = postData;
 
   return db.ref().update(updates);
+  
   }
-
-
 
 export const onceGetUsers = () =>
   db.ref('users').once('value');
@@ -58,5 +57,12 @@ db.ref(`users/` + auth.currentUser.uid + '/profile/members').set({
     participants: 2
     // price,
   });
+
+  export const removeBuckyFromTheUserList = (buckyID) => {
+    console.log(buckyID)
+    db.ref('users/' + auth.currentUser.uid + '/profile/checklist/buckies/features/').child(buckyID).remove()
+  }
+
+
 
 // Other Entity APIs ...
