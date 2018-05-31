@@ -9,13 +9,14 @@ import withAuthorization from './withAuthorization';
 import InitialMap from './Map/InitialMap'
 import CheckIn from './CheckIn';
 
+import './MapPage.css';
+
 class MapPage extends Component {
     render() {
         return (
             <div className='Map'>
-                <CheckIn />
-                
                 <InitialMap />
+                <CheckIn />
             </div>
         );
     }

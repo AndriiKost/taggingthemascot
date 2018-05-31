@@ -189,6 +189,12 @@ body {
 .Checklist {
   padding-bottom: 80px;
 }
+.Checklist li {
+  margin: 10px;
+  padding: 10px;
+  border-right: 1px solid #5A5A5A;
+  border-bottom: 1px solid #5A5A5A;
+}
 
 /* #####======= SCREENS ========##### */
 @media screen and (max-width: 350px) {

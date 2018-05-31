@@ -3,7 +3,11 @@ import ReactDOM from 'react-dom'
 
 import { db } from '../../firebase//index'
 
+import buckyIcon from '../../assets/buckyIcon.png'
 import { buckies } from '../data/index'
+
+
+import copy from 'copy-to-clipboard';
 
 export default class MapContainer extends Component {
 
@@ -71,9 +75,32 @@ export default class MapContainer extends Component {
         const marker = new google.maps.Marker({ // creates a new Google maps Marker object.
           position: {lat: location.location.lat, lng: location.location.lng}, // sets position of marker to specified location
           map: this.map, // sets markers to appear on the map we just created on line 35
-          title: location.name // the title of the marker is set to the name of the location
+          title: location.name, // the title of the marker is set to the name of the location
+          icon: buckyIcon,
+          addressString: location.address,
+          buckyID: location.id
+        });
+        marker.addListener('click', function() {
+          infowindow(mapConfig, marker);
         });
       })
+
+      const contentString = (buckyTitle, buckyAddress, buckyID) => {
+
+        return('<div id="content">'+
+        '<div id="siteNotice">'+
+        '</div>'+
+        '<h1>'+buckyTitle+' with id of '+buckyID+'</h1>'+'<h2>'+buckyAddress+'</h2>'+
+        '</div>'+
+        '</div>')
+      } ;
+
+  const infowindow = (mapConfig, marker) => {
+    return new google.maps.InfoWindow({
+      content: contentString(marker.title, marker.addressString, marker.buckyID)})
+      .open(mapConfig, marker);
+  } 
+      
 
     }
   }
@@ -81,7 +108,7 @@ export default class MapContainer extends Component {
   render() {
     const style = { // MUST specify dimensions of the Google map or it will not work. Also works best when style is specified inside the render function and created as an object
       width: '100%', // 90vw basically means take up 90% of the width screen. px also works.
-      height: '40vh' // 75vh similarly will take up roughly 75% of the height of the screen. px also works.
+      height: '55vh' // 75vh similarly will take up roughly 75% of the height of the screen. px also works.
     }
 
     return ( // in our return function you must return a div with ref='map' and style.

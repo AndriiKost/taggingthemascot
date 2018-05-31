@@ -112,7 +112,7 @@ class CheckIn extends React.Component {
           return (
             <div>
                 {coordinates}
-                <h1>{this.state.distance}</h1>
+                <h5>{this.state.distance}</h5>
             </div>
           )
   }
