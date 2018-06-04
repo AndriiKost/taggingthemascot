@@ -6,8 +6,11 @@ import { db } from '../../firebase//index'
 import buckyIcon from '../../assets/buckyIcon.png'
 import { buckies } from '../data/index'
 
-
 import copy from 'copy-to-clipboard';
+
+import DetailWindow from './DetailWindow';
+
+import jsxToString from 'jsx-to-string';
 
 export default class MapContainer extends Component {
 
@@ -21,26 +24,18 @@ export default class MapContainer extends Component {
   componentDidMount() {
     db.getBuckies().then( snapshot =>
     this.updateStateWithLocations(snapshot.val()))
-
-    // buckies.buckies.features.map(bucky => {
-    //     this.state.locations.push({
-    //         name: bucky.properties.name,
-    //         location : {lat: bucky.geometry.coordinates[1], lng: bucky.geometry.coordinates[0]}
-    //     })
-    // })
-
   }
 
-  updateStateWithLocations = (buckies) => {
-    console.log(buckies)
-    
+  updateStateWithLocations = ( buckies ) => {
     let dataArr = []
 
     buckies.map(el => 
       // Update state with Firebase Data
-      dataArr.push({name: el.properties.name,
+      dataArr.push({
+      name: el.properties.name,
       id: el.properties.id,
       address: el.properties.address,
+      imgFileName: el.properties.imgFileName,
     location: {
         lat: el.geometry.coordinates[1],
         lng: el.geometry.coordinates[0]
@@ -48,7 +43,6 @@ export default class MapContainer extends Component {
     )
     this.state.locations = dataArr
     
-    console.log(this.state.locations)
     this.loadMap(); // call loadMap function to load the google map
   }
 
@@ -78,26 +72,17 @@ export default class MapContainer extends Component {
           title: location.name, // the title of the marker is set to the name of the location
           icon: buckyIcon,
           addressString: location.address,
-          buckyID: location.id
+          buckyID: location.id,
+          imgFileName: location.imgFileName
         });
         marker.addListener('click', function() {
           infowindow(mapConfig, marker);
         });
       })
 
-      const contentString = (buckyTitle, buckyAddress, buckyID) => {
-
-        return('<div id="content">'+
-        '<div id="siteNotice">'+
-        '</div>'+
-        '<h1>'+buckyTitle+' with id of '+buckyID+'</h1>'+'<h2>'+buckyAddress+'</h2>'+
-        '</div>'+
-        '</div>')
-      } ;
-
   const infowindow = (mapConfig, marker) => {
     return new google.maps.InfoWindow({
-      content: contentString(marker.title, marker.addressString, marker.buckyID)})
+      content: jsxToString(DetailWindow(marker.title, marker.addressString, marker.buckyID, marker.imgFileName))})
       .open(mapConfig, marker);
   } 
       
