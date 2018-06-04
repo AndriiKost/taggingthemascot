@@ -23,7 +23,7 @@ const customStyles = {
   }
 };
 
-// Modal.setAppElement('#App')
+Modal.setAppElement('#root');
 
 export default class MapContainer extends Component {
 
@@ -110,7 +110,6 @@ closeModal() {
         });
         marker.addListener('click', 
         // function() { infowindow(mapConfig, marker)}
-        // this.openModal(marker)
         () => { 
           this.setState({
             modalIsOpen: true,
@@ -120,19 +119,15 @@ closeModal() {
               buckyID: marker.buckyID,
               imgFileName: marker.imgFileName
             }
-          });
-          console.log('open modal -> ',this.state.currentBucky)
+          })
         }
-      );
+      )
       })
-
-  const infowindow = (mapConfig, marker) => {
-    return new google.maps.InfoWindow({
-      content: jsxToString(DetailWindow(marker.title, marker.addressString, marker.buckyID, marker.imgFileName))})
-      .open(mapConfig, marker);
-  } 
-      
-
+  // const infowindow = (mapConfig, marker) => {
+  //   return new google.maps.InfoWindow({
+  //     content: jsxToString(DetailWindow(marker.title, marker.addressString, marker.buckyID, marker.imgFileName))})
+  //     .open(mapConfig, marker);
+  // } 
     }
   }
 
