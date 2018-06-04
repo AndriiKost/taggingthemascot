@@ -31,9 +31,11 @@ class BuckyCheckList extends Component {
 
     checklist.map(el => 
       // Update state with Firebase Data
-      dataArr.push({name: el.properties.name,
+      dataArr.push({
+      name: el.properties.name,
       id: el.properties.id,
-      address: el.properties.address})
+      address: el.properties.address,
+      imgFileName: el.properties.imgFileName})
     )
     this.state.buckies = dataArr
   }
@@ -45,11 +47,19 @@ render () {
         <div>
             <ol className='Checklist'>
         
-            {this.state.buckies.map(el => (
+            {this.state.buckies.map(el => {
+              let img = (el.imgFileName)
+              ? `https://deliandigital.com/wp-content/uploads/2018/06/${el.imgFileName}`
+              : null
+
+            return(
+
             <li>
+              <img
+              src={img} width="10%" height="auto"/>
                 {el.name} at {el.address} with id of {el.id}
             </li>
-            ))}
+            )})}
         </ol>
         </div>
     )

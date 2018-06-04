@@ -1,29 +1,62 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
 
-import { db } from '../../firebase//index'
+import { db } from '../../firebase/index'
 
 import buckyIcon from '../../assets/buckyIcon.png'
 import { buckies } from '../data/index'
 
-import copy from 'copy-to-clipboard';
-
 import DetailWindow from './DetailWindow';
-
 import jsxToString from 'jsx-to-string';
+
+import Modal from 'react-modal';
+
+// Styles for modal window
+const customStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)'
+  }
+};
+
+// Modal.setAppElement('#App')
 
 export default class MapContainer extends Component {
 
-  // ======================
-  // ADD LOCATIONS TO STATE
-  // ======================
-  state = {
-    locations: []
+constructor() {
+  super();
+  this.state = {
+    locations: [],
+    modalIsOpen: false,
+    currentBucky: ''
   }
+
+    this.openModal = this.openModal.bind(this);
+    this.afterOpenModal = this.afterOpenModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+}
+
+openModal(marker) {
+  this.setState({modalIsOpen: true});
+  console.log('open modal -> ',marker)
+}
+
+afterOpenModal() {
+  // references are now sync'd and can be accessed.
+  this.subtitle.style.color = '#f00';
+}
+
+closeModal() {
+  this.setState({modalIsOpen: false});
+}
 
   componentDidMount() {
     db.getBuckies().then( snapshot =>
-    this.updateStateWithLocations(snapshot.val()))
+    this.updateStateWithLocations(snapshot.val()));
   }
 
   updateStateWithLocations = ( buckies ) => {
@@ -75,9 +108,22 @@ export default class MapContainer extends Component {
           buckyID: location.id,
           imgFileName: location.imgFileName
         });
-        marker.addListener('click', function() {
-          infowindow(mapConfig, marker);
-        });
+        marker.addListener('click', 
+        // function() { infowindow(mapConfig, marker)}
+        // this.openModal(marker)
+        () => { 
+          this.setState({
+            modalIsOpen: true,
+            currentBucky: {
+              title: marker.title,
+              addressString: marker.addressString,
+              buckyID: marker.buckyID,
+              imgFileName: marker.imgFileName
+            }
+          });
+          console.log('open modal -> ',this.state.currentBucky)
+        }
+      );
       })
 
   const infowindow = (mapConfig, marker) => {
@@ -99,6 +145,19 @@ export default class MapContainer extends Component {
     return ( // in our return function you must return a div with ref='map' and style.
       <div ref="map" style={style}>
         loading map...
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          style={customStyles}
+          contentLabel="Example Modal"
+        >
+          <h2 ref={subtitle => this.subtitle = subtitle}>{this.state.currentBucky.title}</h2>
+          <h2 ref={subtitle => this.subtitle = subtitle}>{this.state.currentBucky.addressString}</h2>
+          <img
+              src={`https://deliandigital.com/wp-content/uploads/2018/06/${this.state.currentBucky.imgFileName}`} width="30%" height="auto"/>
+          <button onClick={this.closeModal}>close</button>
+        </Modal>
       </div>
     )
   }
