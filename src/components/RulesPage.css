@@ -2,8 +2,9 @@
     overflow: hidden;
     padding: 5px;
     background: #ECE9E6;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+    background-image: url('https://deliandigital.com/wp-content/uploads/2018/06/Half-Tone-Gray-90.png');
+    background-repeat: no-repeat;
+    background-size: contain;
     height: 95vh;
 }
 .rulesPage h1 {

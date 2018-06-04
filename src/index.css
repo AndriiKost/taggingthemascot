@@ -75,9 +75,13 @@ body {
   text-align: center;
   border: 1px solid #000;
   border-radius: 2%;
-  background: #ECE9E6;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+  /* background: #ECE9E6;  
+  background: -webkit-linear-gradient(to left, #FFFFFF, #ECE9E6);  
+  background: linear-gradient(to left, #FFFFFF, #ECE9E6);  */
+  background-image: url('https://deliandigital.com/wp-content/uploads/2018/06/Half-Tone-Gray-90.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: contain;
 }
 
 .image-in-event-box img {
@@ -141,12 +145,23 @@ body {
   cursor: pointer;
 }
 
+/* Spoofing Billy background */
+/* .spoofingWillyBackground {
+  background-image: url('https://deliandigital.com/wp-content/uploads/2018/06/Half-Tone-GraywithOpacity.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: contain;
+} */
+
 /* Account Add Event Section */
 .gradientSection {
   padding-top: 10px;
-  background: #ECE9E6;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+  background: #ECE9E6; 
+  /* background: -webkit-linear-gradient(to left, #FFFFFF, #ECE9E6);
+  /* background: linear-gradient(to left, #FFFFFF, #ECE9E6); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+   */
+  background-image: url('https://deliandigital.com/wp-content/uploads/2018/06/Half-Tone-Gray-90.png');
+  background-repeat: no-repeat;
+  background-size: contain;
   text-align: center;
   height: 95vh;
 }
@@ -188,14 +203,26 @@ body {
 /* ######====== Check List =====###### */
 .Checklist {
   padding-bottom: 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
-.Checklist li {
+.Checklist > li {
   margin: 10px;
   padding: 10px;
+  margin-left: 0;
+  padding-left: 0;
   border-right: 1px solid #5A5A5A;
   border-bottom: 1px solid #5A5A5A;
 }
-
+.Checklist li img {
+  width: 70%;
+}
+.Checklist-name {
+  color: red;
+}
+.Checklist-address {
+  color: darkblue;
+}
 /* #####======= SCREENS ========##### */
 @media screen and (max-width: 350px) {
   .buckyHeader h2 {

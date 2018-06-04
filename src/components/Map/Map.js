@@ -134,7 +134,7 @@ closeModal() {
   render() {
     const style = { // MUST specify dimensions of the Google map or it will not work. Also works best when style is specified inside the render function and created as an object
       width: '100%', // 90vw basically means take up 90% of the width screen. px also works.
-      height: '55vh' // 75vh similarly will take up roughly 75% of the height of the screen. px also works.
+      height: '50vh' // 75vh similarly will take up roughly 75% of the height of the screen. px also works.
     }
 
     return ( // in our return function you must return a div with ref='map' and style.

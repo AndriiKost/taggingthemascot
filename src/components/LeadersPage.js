@@ -54,7 +54,7 @@ class LeadersPage extends Component {
     const { users } = this.props;
 
     const teamList = ( ) =>
-    <div>
+    <div className='spoofingWillyBackground'>
         <ul>
         <div className='TeamScoreContainer'>
         <li> <span className='label'>Bucky's visited</span> 

@@ -45,7 +45,7 @@ render () {
     const { users } = this.props;
     return (
         <div>
-            <ol className='Checklist'>
+            <ul className='Checklist'>
         
             {this.state.buckies.map(el => {
               let img = (el.imgFileName)
@@ -53,14 +53,15 @@ render () {
               : null
 
             return(
-
             <li>
-              <img
-              src={img} width="10%" height="auto"/>
-                {el.name} at {el.address} with id of {el.id}
+              <p>
+                <img src={img} width="10%" height="auto"/>
+              </p>
+                <p className='Checklist-name'>{el.name}</p>  
+                <p className='Checklist-address'>{el.address}</p>
             </li>
             )})}
-        </ol>
+        </ul>
         </div>
     )
   }
