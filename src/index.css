@@ -249,3 +249,13 @@ body {
     grid-template-columns: 1fr;
   }
 }
+.loadingMap {
+  position: absoulte;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 200px;
+  background-color: #eee;
+  text-align: center;
+  padding:50%;
+}

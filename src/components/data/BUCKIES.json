@@ -601,7 +601,7 @@
         "address" : "\r601 W Dayton St, Madison, WI 53703",
         "artistName" : "Jill Iwanski",
         "id" : "38U",
-        "imgFileName" : "-And-On-Wisconsin_Front.jpg",
+        "imgFileName" : "And-On-Wisconsin_Front.jpg",
         "link" : "https://buckyonparade.com/product/and-on-wisconsin-2/",
         "locationName" : "Kohl Center",
         "name" : "...And On Wisconsin!",
@@ -1026,7 +1026,7 @@
       "type" : "Feature"
     }, {
       "geometry" : {
-        "coordinates" : [ -89.33594942092894, 43.09230255945622 ],
+        "coordinates" : [ -89.3358951, 43.0924056 ],
         "type" : "Point"
       },
       "properties" : {

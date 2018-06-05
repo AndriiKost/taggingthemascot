@@ -8,6 +8,7 @@ class CheckIn extends React.Component {
         checkIn: false,
         distance: '',
         buckyToRemove: '',
+        buckyNameTagged: '',
         buckies: []
     }
 
@@ -59,7 +60,7 @@ class CheckIn extends React.Component {
 
     initialCheckInHandler = () => {
         this.setState({checkIn: true})
-
+        console.log(this.state.buckies)
         // find closest bucky
         const closest = this.state.buckies.reduce((lowest, cur) => {
           // if (cur.geometry.coordinates !== undefined) {
@@ -75,21 +76,27 @@ class CheckIn extends React.Component {
           //   return lowest
           // }
 
+          // assign first element to the checkable object if it has lng and lat
+          lowest.lat && lowest.lng ? cur = lowest : null;
+
           if (cur.lat !== undefined || cur.lng !== undefined) {
             const distanceFunc = this.findClosestBucky(this.props.coords.latitude,this.props.coords.longitude, cur.lat, cur.lng, cur.id);
+            // manual coordinates for testing
+            // const distanceFunc = this.findClosestBucky(43.074119262953495,-89.45224463939667, cur.lat, cur.lng, cur.id);
             // check if lowest is same as rendered
             if (distanceFunc > lowest) {
               return lowest
             }  else {
               this.state.buckyToRemove = parseInt(cur.id.slice(0, -1)) - 1;
+              this.state.buckyNameTagged = cur.name;
               return distanceFunc
             }
           } else {
             return lowest
           }
         })
-        console.log('#######ALERT ===> ',this.state.buckyToRemove)
-        closest < 20 ? ( db.updateScore(), db.removeBuckyFromTheUserList(this.state.buckyToRemove), this.setState({distance: 'Congratulations! You have tagged ' + this.state.buckies[this.state.buckyToRemove].name + '!'}) ) : this.setState({distance: 'Can not find any Bucky near you. You are ' + closest + ' feet away'}) ;
+        console.log('#######ALERT ===> ',this.state.buckyNameTagged)
+        closest < 30 ? ( db.updateScore(), db.removeBuckyFromTheUserList(this.state.buckyToRemove), this.setState({distance: 'Congratulations! You have tagged ' + this.state.buckyNameTagged + '!'}) ) : this.setState({distance: 'Can not find any Bucky near you. You are ' + closest + ' feet away'}) ;
     }
 
     refreshLocation = () => {
