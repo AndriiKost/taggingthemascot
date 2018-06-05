@@ -1,60 +1,20 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { compose } from 'recompose';
+import React from 'react';
 
-import { db } from '../firebase';
-
-class LandingPage extends Component {
-  componentDidMount() {
-    const { onSetUsers } = this.props;
-
-    db.onceGetUsers().then(snapshot =>
-      onSetUsers(snapshot.val())
-    );
+const LandingPage = () => {
+  const style = {
+    textAlign: 'left'
   }
-
-    render() {
-      const { users } = this.props;
-      const h1Style = {
-        textAlign: 'center'
-      };
-  
-      return (
+  return (
         <div className='gradientSection'>
-          <h1 style={h1Style}>What's happening on the streets of Madison</h1>
-          {/* { !!users && <UserList users={users} /> } */}
+          <h3>Welcome to the “The Once In A Lifetime Amazing 24 Hour Tag Bucky On Parade Extravaganza!!!”</h3> 
+          <p style={style}>Which means in real life, “The Once In A Lifetime Amazing 24 Hour Tag Bucky On Parade Extravaganza!!!” What this event is, is a 24 hour race to tag as many of the 85 life size Buckys placed around Middleton, Sun Prairie, Verona, and Madison.</p>
+          <p style={style}>What this event is designed for is to give back to our community. The name says it all because this event will be and can only be held ONCE EVER.</p>
+          <p style={style}>Right now the 85 Buckys are out in the open and accessible to the public but on September 15th 2018 the Buckys will be auctioned off and scattered way too far to do it in 24 hours.</p>
+          <p style={style}>This is your chance to be involved in a ONCE in a lifetime event that has the potential to set a new standard in charitable events in our area, quit possibly Dane county or even our state. Our goal is to incorporate local business into a extremely charitable endeavor.</p>
+          <p style={style}>The exciting news is we are well on our way with the components to make this event successful.</p>
+          <p style={style}>To reach our goal of $10,000.00 </p>
+
         </div>
-      );
-    }
-}
+)}
 
-// const UserList = ({ users }) =>
-//   <div className='eventSection'>
-//     {Object.keys(users).map(key => users[key].events ? EventList(users[key].events, users[key]) : null )}
-//   </div>
-
-//   const EventList = (events, place) =>
-//       Object.keys(events).map(key => 
-//         <div key={key} className='event-box'>
-//           <h2>  {events[key].event_name}  </h2>
-//           <span> {events[key].price === 'free' ? 'FREE' : '$' + events[key].price}  </span>
-//           <p style={{textTransform: 'capitalize', fontSize: '0.9em', color: '#4C4C4C'}}>
-//             {place.username}
-//           </p>
-//           <hr />
-//           <div className='image-in-event-box'><img src={events[key].banner} /></div>
-//         </div>
-// )
-
-const mapStateToProps = (state) => ({
-  users: state.userState.users,
-});
-          
-const mapDispatchToProps = (dispatch) => ({
-  onSetUsers: (users) => dispatch({ type: 'USERS_SET', users }),
-});
-          
-        
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps)
-  )(LandingPage);
+export default LandingPage;

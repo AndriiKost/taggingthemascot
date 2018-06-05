@@ -115,7 +115,7 @@ class SignUpForm extends Component {
           value={passwordOne}
           onChange={event => this.setState(byPropKey('passwordOne', event.target.value))}
           type="password"
-          placeholder="Password"
+          placeholder="Password (minimum of 6 characters)"
         />
         <input
           value={passwordTwo}
