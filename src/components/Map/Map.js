@@ -10,7 +10,7 @@ import DetailWindow from './DetailWindow';
 import jsxToString from 'jsx-to-string';
 
 import Modal from 'react-modal';
-
+import { ScaleLoader } from 'react-spinners';
 // Styles for modal window
 const customStyles = {
   content : {
@@ -32,7 +32,8 @@ constructor() {
   this.state = {
     locations: [],
     modalIsOpen: false,
-    currentBucky: ''
+    currentBucky: '',
+    loading: true
   }
 
     this.openModal = this.openModal.bind(this);
@@ -139,7 +140,8 @@ closeModal() {
 
     return ( // in our return function you must return a div with ref='map' and style.
       <div ref="map" style={style}>
-        <div className='loadingMap'>loading map...</div>
+        {/* <div className='loadingMap'>loading map...</div> */}
+          <div className='loading'><ScaleLoader color={'#fc0d1b'}  loading={this.state.loading} /></div>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}

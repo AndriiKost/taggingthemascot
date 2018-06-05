@@ -3,7 +3,6 @@ body {
   padding: 0;
   font-family: Nunito, sans-serif;
 }
-
 /* Header  */
 .buckyHeader {
   background-color: rgb(223,223,223);
@@ -258,4 +257,9 @@ body {
   background-color: #eee;
   text-align: center;
   padding:50%;
+}
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }

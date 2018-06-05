@@ -7,12 +7,13 @@ import { db, auth } from '../firebase';
 import { updateBuckyScore } from '../firebase/db';
 
 import './LeadersPage.css';
+import { ScaleLoader } from 'react-spinners';
 
 class LeadersPage extends Component {
   
   state = {
     team: [],
-    ready: false
+    loading: true
   }
 
   componentDidMount() {
@@ -31,8 +32,6 @@ class LeadersPage extends Component {
   updateStateWithTeamData = (users) => {
     
     let dataArr = []
-    console.log(users)
-
     Object.keys(users).map(key => 
       // Update state with Firebase Data
       dataArr.push({teamScore: Object.keys(users[key].profile.visited).length,
@@ -43,11 +42,9 @@ class LeadersPage extends Component {
     const newArray = dataArr.sort(function(a, b){
       return b.teamScore-a.teamScore
     });
-    console.log('newArray', newArray)
 
     this.state.team = newArray
-
-    console.log(this.state.team)
+    this.setState({ loading: false })
   }
 
   render() {
@@ -75,33 +72,12 @@ class LeadersPage extends Component {
     return (
       <div className='gradientSection'>
         <h1 className='LeadersTitle'><span className="sideBorder"></span>Real Time Team Scores<span className="sideBorder"></span></h1>
-        {/* { !!users && <UserList users={users} /> } */}
+        <div className='loading'><ScaleLoader color={'#fc0d1b'}  loading={this.state.loading} /></div>
         { teamList() }
       </div>
     );
   }
 }
-
-// // Retrieve data from firebase and render
-// const UserList = ({ users }) =>
-// <div>
-//     <ul>
-//     <div className='TeamScoreContainer'>
-//     <li> <span className='label'>Bucky's visited</span> 
-//           <span className='label'>Team Name</span> 
-//           <span className='label'>Partisipants</span> </li></div>
-//       {/* Loop through Teams Objects and render each of them  */}
-//       {Object.keys(users).map(key => (
-//         <div className='TeamScoreContainer'> 
-//         <li className='teamScoreListItem'> 
-//           <span className='label'>{Object.keys(users[key].profile.visited).length}</span> 
-//           <span className='label'>{users[key].username}</span> 
-//           <span className='label'>{users[key].profile.members}</span>
-//         </li>
-//       </div> ) )}
-//     </ul>
-//     <button onClick={db.updateScore}>Check in</button>
-//   </div>
 
 const authCondition = (authUser) => !!authUser;
 

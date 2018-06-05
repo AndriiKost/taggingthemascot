@@ -6,11 +6,13 @@ import withAuthorization from './withAuthorization';
 import { db, auth } from '../firebase';
 import { updateBuckyScore } from '../firebase/db';
 
+import { ScaleLoader } from 'react-spinners';
+
 class BuckyCheckList extends Component {
   
   state = {
     buckies: [],
-    ready: false
+    loading: true
   }
 
   componentDidMount() {
@@ -38,6 +40,7 @@ class BuckyCheckList extends Component {
       imgFileName: el.properties.imgFileName})
     )
     this.state.buckies = dataArr
+    this.setState({ loading: false })
   }
 
 
@@ -46,7 +49,7 @@ render () {
     return (
         <div>
             <ul className='Checklist'>
-        
+            <div className='loading'><ScaleLoader color={'#fc0d1b'}  loading={this.state.loading} /></div>
             {this.state.buckies.map(el => {
               let img = (el.imgFileName)
               ? `https://deliandigital.com/wp-content/uploads/2018/06/${el.imgFileName}`
