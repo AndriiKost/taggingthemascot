@@ -68,7 +68,7 @@ class SignUpForm extends Component {
             // use unmutable state
             this.setState(() => ({ ...INITIAL_STATE }));
             // redirect after signing up
-            history.push(routes.HOME);
+            history.push(routes.MAP);
         })
         .catch(error => {
             this.setState(byPropKey('error', error));
@@ -128,7 +128,7 @@ class SignUpForm extends Component {
         </button>
         { error && <p>{error.message}</p> }
       </form>
-      {this.state.teamNameExisting ? <h2>Team Name Already exists, please try another one.</h2> : null}
+      {this.state.teamNameExisting ? <h3 className='messageBox'>Team Name Already exists, please try another one.</h3> : null}
       </div>
     );
   }

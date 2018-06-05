@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { db } from '../firebase';
 
 import { connect } from 'react-redux';
 import { compose } from 'recompose';

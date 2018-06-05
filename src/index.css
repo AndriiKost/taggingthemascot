@@ -163,7 +163,9 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   text-align: center;
-  height: 95vh;
+  /* height: 95vh; */
+  height: 100%;
+  padding-bottom: 20%;
 }
 .gradientSection h2 {
   margin-top: 10%;

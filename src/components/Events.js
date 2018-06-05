@@ -9,7 +9,6 @@ const byPropKey = (propertyName, value) => () => ({
 const INITIAL_STATE = {
   banner: '',
   event_name: '',
-  price: '',
   error: null,
 };
 
@@ -21,9 +20,9 @@ class Events extends Component {
   }
 
   onSubmit = (event) => {
-    const { banner, event_name, price } = this.state;
+    const { banner, event_name } = this.state;
 
-    db.addEvent(banner, event_name, price)
+    db.addEvent(banner, event_name)
       .then(() => {
         this.setState(() => ({ ...INITIAL_STATE }));
       })
@@ -38,11 +37,10 @@ class Events extends Component {
     const {
       banner, 
       event_name, 
-      price,
       error,
     } = this.state;
 
-    const isInvalid = banner === '' ||  event_name === '';// || price === ''
+    const isInvalid = banner === '' ||  event_name === '';
 
     return (
       <form onSubmit={this.onSubmit}>
@@ -58,12 +56,6 @@ class Events extends Component {
           type="email"
           placeholder="Email"
         />
-        {/* <input
-          value={price}
-          onChange={event => this.setState(byPropKey('price', event.target.value))}
-          type="text"
-          placeholder="Event Price"
-        /> */}
         <button disabled={isInvalid} type="submit">
           Add Teammate
         </button>

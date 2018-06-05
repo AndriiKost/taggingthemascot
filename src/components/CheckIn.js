@@ -2,8 +2,6 @@ import React from 'react';
 import {geolocated} from 'react-geolocated';
 import { db } from '../firebase';
 import * as routes from '../constants/routes';
-
-import { buckies } from './data'
  
 class CheckIn extends React.Component {
     state = {
@@ -30,7 +28,6 @@ class CheckIn extends React.Component {
         lng: el.geometry.coordinates[0]})
       )
       this.state.buckies = dataArr
-      console.log('From the state ->',this.state.buckies)
     }
 
     measure = (lat1, lon1, lat2, lon2) => {  // generally used geo measurement function
@@ -42,7 +39,7 @@ class CheckIn extends React.Component {
         Math.sin(dLon/2) * Math.sin(dLon/2);
         let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         let d = R * c;
-        // console.log(d * 1000)
+
         d * 1000 > 6
         ? this.setState({distance: 'You are ' + Math.round((d * 1000 * 3.2808)) + ' feet away, move closer'}) // meters
         : this.setState({distance: 'Congratulations, You have successfully taged [BUCKY_NAME]'})
@@ -84,7 +81,6 @@ class CheckIn extends React.Component {
             if (distanceFunc > lowest) {
               return lowest
             }  else {
-              // console.log('#######ALERT ===> ',cur.id)
               this.state.buckyToRemove = parseInt(cur.id.slice(0, -1)) - 1;
               return distanceFunc
             }
@@ -93,7 +89,7 @@ class CheckIn extends React.Component {
           }
         })
         console.log('#######ALERT ===> ',this.state.buckyToRemove)
-        closest < 16 ? ( db.updateScore(), db.removeBuckyFromTheUserList(this.state.buckyToRemove), this.setState({distance: 'Congratulations! You have tagged a bucky!'}) ) : this.setState({distance: 'Can not find any Bucky near you. You are ' + closest + ' feet away'}) ;
+        closest < 20 ? ( db.updateScore(), db.removeBuckyFromTheUserList(this.state.buckyToRemove), this.setState({distance: 'Congratulations! You have tagged ' + this.state.buckies[this.state.buckyToRemove].name + '!'}) ) : this.setState({distance: 'Can not find any Bucky near you. You are ' + closest + ' feet away'}) ;
     }
 
     refreshLocation = () => {
