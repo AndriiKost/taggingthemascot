@@ -5,7 +5,7 @@ body {
 }
 /* Header  */
 .buckyHeader {
-  background-color: rgb(223,223,223);
+  background-color: rgba(187, 39, 31, 0.9);
   position: absolute;
   top: 0;
   left: 0;
@@ -20,7 +20,8 @@ body {
 .buckyHeader h2 {
   position: absolute;
   font-size: 2em;
-  color: rgb(124, 17, 8);
+  /* color: rgb(124, 17, 8); */
+  color: #fff;
   top: 0;
   right: 0;
   margin: 0;
@@ -40,30 +41,29 @@ body {
 .Navigation ul {
   margin: 0;
   padding: 0;
-  height: 70px;
-  background-color: rgb(220,183,167);
+  height: 40px;
+  background-color: rgb(187, 39, 31);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-
 .Navigation ul > li {
   list-style: none;
-  height: 70px;
+  height: 40px;
   border-right: 1px solid #000;
 }
 .Navigation ul li > a:hover {
   cursor: pointer;
-  color: #fff;
-  background-color: rgb(123,18,8);
+  color: rgb(151,28,24);
+  background-color: #fff;
 }
 
 .Navigation ul li > a {
   display: block;
   text-decoration: none;
-  color: #000;
-  padding-top: 10%;
+  color: #fff;
+  padding-top: 10px;
   text-align: center;
-  height: 70px;
+  height: 40px;
   width: 100%;
 }
 
@@ -77,10 +77,10 @@ body {
   /* background: #ECE9E6;  
   background: -webkit-linear-gradient(to left, #FFFFFF, #ECE9E6);  
   background: linear-gradient(to left, #FFFFFF, #ECE9E6);  */
-  background-image: url('https://deliandigital.com/wp-content/uploads/2018/06/Half-Tone-Gray-90.png');
+  /* background-image: url('https://deliandigital.com/wp-content/uploads/2018/06/Half-Tone-Gray-90.png');
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: contain;
+  background-size: contain; */
 }
 
 .image-in-event-box img {
@@ -103,7 +103,7 @@ body {
   margin-bottom: 80px;
 }
 .accountSection {
-  border: 1px solid #ECE9E6;
+  border: 1px solid #971C18;
   border-radius: 10px;
   margin: 15px 10px 0 10px;
   padding: 15px;
@@ -115,17 +115,18 @@ body {
 }
 .accountSection form input, .accountSection form button {
   padding: 15px;
-  border: 1px solid #eee;
+  border: 1px solid #971C18;
   border-radius: 3px;
 }
 
 .accountSection form button {
-  background-color: #eee;
+  background-color: #971C18;
 }
 .accountSection form button:hover {
   cursor: pointer;
-  background-color: #a5a5a5;
+  background-color: #971C18;
   color: #fff;
+  border: 1px solid #000;
 }
 
 /* Sign Out button */
@@ -133,13 +134,14 @@ body {
   position: absolute;
   top: 50;
   right: 0;
-  border: 1px solid #000;
+  color: #971C18;
+  border: 1px solid #971C18;
   padding: 1%;
   margin-right: 10px;
   border-radius: 2px;
 }
 .SignOutButton:hover {
-  background-color: #000;
+  background-color: #971C18;
   color: #fff;
   cursor: pointer;
 }
@@ -155,13 +157,13 @@ body {
 /* Account Add Event Section */
 .gradientSection {
   padding-top: 10px;
-  background: #ECE9E6; 
+  /* background: #ECE9E6;  */
   /* background: -webkit-linear-gradient(to left, #FFFFFF, #ECE9E6);
   /* background: linear-gradient(to left, #FFFFFF, #ECE9E6); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+   */
-  background-image: url('https://deliandigital.com/wp-content/uploads/2018/06/Half-Tone-Gray-90.png');
+  /* background-image: url('https://deliandigital.com/wp-content/uploads/2018/06/Half-Tone-Gray-90.png');
   background-repeat: no-repeat;
-  background-size: contain;
-  text-align: center;
+  background-size: contain;*/
+  text-align: center; 
   /* height: 95vh; */
   height: 100%;
   padding-bottom: 20%;
@@ -179,17 +181,18 @@ body {
   height: 30px;
   padding: 5px;
   font-size: 1em;
-  border: 1px solid #eee;
+  border: 1px solid #971C18;
   border-radius: 7px;
 }
 .gradientSection form button {
-  background-color: #595959;
+  background-color: #BB241F;
   color: #fff;
   cursor: pointer;
   height: 45px;
 }
 .gradientSection form button:hover {
-  background-color: #323232;
+  background-color: #fff;
+  color: #971C18;
 }
 .accountInfo {
   position: absolute;
@@ -202,6 +205,9 @@ body {
 }
 
 /* ######====== Check List =====###### */
+.ChecklistPage {
+background-color: #fff;
+}
 .Checklist {
   padding-bottom: 80px;
   display: grid;

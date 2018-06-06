@@ -18,6 +18,7 @@ const DetailWindow = (buckyTitle, buckyAddress, buckyID, imgFileName) => {
               <div class='description'>
                 <h1>{buckyTitle}</h1>
                 <h2>{buckyAddress}</h2>
+                <h3></h3>
             </div>
         </div>
         )

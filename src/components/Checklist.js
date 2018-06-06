@@ -37,7 +37,8 @@ class BuckyCheckList extends Component {
       name: el.properties.name,
       id: el.properties.id,
       address: el.properties.address,
-      imgFileName: el.properties.imgFileName})
+      imgFileName: el.properties.imgFileName,
+      link: el.properties.link})
     )
     this.state.buckies = dataArr
     this.setState({ loading: false })
@@ -47,7 +48,7 @@ class BuckyCheckList extends Component {
 render () {
     const { users } = this.props;
     return (
-        <div>
+        <div className='ChecklistPage'>
             <ul className='Checklist'>
             <div className='loading'><ScaleLoader color={'#fc0d1b'}  loading={this.state.loading} /></div>
             {this.state.buckies.map(el => {
@@ -58,7 +59,9 @@ render () {
             return(
             <li>
               <p>
-                <img src={img} width="10%" height="auto"/>
+                <a href={el.link}>
+                  <img src={img} width="10%" height="auto"/>
+                </a>
               </p>
                 <p className='Checklist-name'>{el.name}</p>  
                 <p className='Checklist-address'>{el.address}</p>

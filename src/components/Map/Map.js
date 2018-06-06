@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom'
 
 import { db } from '../../firebase/index'
 
-import buckyIcon from '../../assets/buckyIcon.png'
+// import buckyIcon from '../../assets/buckyIcon.png'
+import buckyIcon from '../../assets/images/icons/buckies/active.svg'
 import { buckies } from '../data/index'
 
 import DetailWindow from './DetailWindow';
@@ -70,6 +71,7 @@ closeModal() {
       id: el.properties.id,
       address: el.properties.address,
       imgFileName: el.properties.imgFileName,
+      link: el.properties.link,
     location: {
         lat: el.geometry.coordinates[1],
         lng: el.geometry.coordinates[0]
@@ -107,7 +109,8 @@ closeModal() {
           icon: buckyIcon,
           addressString: location.address,
           buckyID: location.id,
-          imgFileName: location.imgFileName
+          imgFileName: location.imgFileName,
+          link: location.link
         });
         marker.addListener('click', 
         // function() { infowindow(mapConfig, marker)}
@@ -118,7 +121,8 @@ closeModal() {
               title: marker.title,
               addressString: marker.addressString,
               buckyID: marker.buckyID,
-              imgFileName: marker.imgFileName
+              imgFileName: marker.imgFileName,
+              link: marker.link
             }
           })
         }
@@ -151,6 +155,7 @@ closeModal() {
         >
           <h2 ref={subtitle => this.subtitle = subtitle}>{this.state.currentBucky.title}</h2>
           <h2 ref={subtitle => this.subtitle = subtitle}>{this.state.currentBucky.addressString}</h2>
+          <h2 ref={subtitle => this.subtitle = subtitle}><a href={this.state.currentBucky.link}>More Info</a></h2>
           <img
               src={`https://deliandigital.com/wp-content/uploads/2018/06/${this.state.currentBucky.imgFileName}`} width="30%" height="auto"/>
           <button onClick={this.closeModal}>close</button>

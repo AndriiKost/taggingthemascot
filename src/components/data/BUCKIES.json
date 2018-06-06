@@ -242,7 +242,7 @@
       "type" : "Feature"
     }, {
       "geometry" : {
-        "coordinates" : [ -89.3828958, 43.075889 ],
+        "coordinates" : [ -89.3830680, 43.0755930 ],
         "type" : "Point"
       },
       "properties" : {

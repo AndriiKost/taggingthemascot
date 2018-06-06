@@ -1,10 +1,10 @@
 .rulesPage {
     overflow: hidden;
     padding: 5px;
-    background: #ECE9E6;  /* fallback for old browsers */
-    background-image: url('https://deliandigital.com/wp-content/uploads/2018/06/Half-Tone-Gray-90.png');
+    background: #fff;  /* fallback for old browsers */
+    /* background-image: url('https://deliandigital.com/wp-content/uploads/2018/06/Half-Tone-Gray-90.png');
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: contain; */
     height: 95vh;
     padding-bottom: 20%;
 }
