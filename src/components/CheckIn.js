@@ -63,7 +63,9 @@ class CheckIn extends React.Component {
         // console.log(this.state.buckies)
         // find closest bucky
         // const closest = this.state.buckies.reduce((lowest, cur) => {
-          const closest = this.state.buckies ? this.state.buckies.reduce((lowest, cur) => {
+          const closest = (!Array.isArray(this.state.buckies) || !this.state.buckies.length) 
+          ? null 
+          : this.state.buckies.reduce((lowest, cur) => {
           // assign first element to the checkable object if it has lng and lat
           lowest.lat && lowest.lng ? cur = lowest : null;
 
@@ -82,7 +84,7 @@ class CheckIn extends React.Component {
           } else {
             return lowest
           }
-        }) : null
+        }) 
         // console.log('#######ALERT ===> ',this.state.buckyNameTagged)
         closest ? closest < 30 ? ( db.updateScore(), db.removeBuckyFromTheUserList(this.state.buckyToRemove), this.setState({distance: 'Congratulations! You have tagged ' + this.state.buckyNameTagged + '!'}) ) : this.setState({distance: 'Can not find any Bucky near you. You are ' + closest + ' feet away'}) : null
     }
