@@ -60,22 +60,10 @@ class CheckIn extends React.Component {
 
     initialCheckInHandler = () => {
         this.setState({checkIn: true})
-        console.log(this.state.buckies)
+        // console.log(this.state.buckies)
         // find closest bucky
-        const closest = this.state.buckies.reduce((lowest, cur) => {
-          // if (cur.geometry.coordinates !== undefined) {
-          //   const distanceFunc = this.findClosestBucky(this.props.coords.latitude,this.props.coords.longitude, cur.geometry.coordinates[1], cur.geometry.coordinates[0], cur.properties.name);
-          //   // check if lowest is same as rendered
-          //   if (distanceFunc > lowest) {
-          //     return lowest
-          //   }  else {
-          //     return distanceFunc
-          //   }
-          //   // return lowest
-          // } else {
-          //   return lowest
-          // }
-
+        // const closest = this.state.buckies.reduce((lowest, cur) => {
+          const closest = this.state.buckies ? this.state.buckies.reduce((lowest, cur) => {
           // assign first element to the checkable object if it has lng and lat
           lowest.lat && lowest.lng ? cur = lowest : null;
 
@@ -94,9 +82,9 @@ class CheckIn extends React.Component {
           } else {
             return lowest
           }
-        })
-        console.log('#######ALERT ===> ',this.state.buckyNameTagged)
-        closest < 30 ? ( db.updateScore(), db.removeBuckyFromTheUserList(this.state.buckyToRemove), this.setState({distance: 'Congratulations! You have tagged ' + this.state.buckyNameTagged + '!'}) ) : this.setState({distance: 'Can not find any Bucky near you. You are ' + closest + ' feet away'}) ;
+        }) : null
+        // console.log('#######ALERT ===> ',this.state.buckyNameTagged)
+        closest ? closest < 30 ? ( db.updateScore(), db.removeBuckyFromTheUserList(this.state.buckyToRemove), this.setState({distance: 'Congratulations! You have tagged ' + this.state.buckyNameTagged + '!'}) ) : this.setState({distance: 'Can not find any Bucky near you. You are ' + closest + ' feet away'}) : null
     }
 
     refreshLocation = () => {

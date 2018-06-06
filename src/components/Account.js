@@ -14,7 +14,7 @@ import SignOutButton from './SignOut';
 const AccountPage = ({ authUser }) => 
   <div className='gradientSection'>
     <SignOutButton />
-      <h2>It's more <span className='funClass'>fun</span> to participate with your friend | {db.auth} </h2>
+      <h2>It's more <span className='funClass'>fun</span> to participate with your friend</h2>
       <Events />
     {/* </div> */}
     <div className="accountSettings">
@@ -26,10 +26,6 @@ const AccountPage = ({ authUser }) =>
         <h4>Change Password</h4>
         <PasswordChangeForm />
       </div>
-      {/* <div className='accountSection'>
-        <h4>Change Account Image</h4>
-        <AccountImage />
-      </div> */}
     </div>
   </div>
 

@@ -97,10 +97,8 @@ closeModal() {
       })
 
       this.map = new maps.Map(node, mapConfig); // creates a new Google map on the specified node (ref='map') with the specified configuration set above.
-
-  // ==================
-  // ADD MARKERS TO MAP
-  // ==================
+  
+  // ================== ADD MARKERS TO MAP
       this.state.locations.forEach( location => { // iterate through locations saved in state
         const marker = new google.maps.Marker({ // creates a new Google maps Marker object.
           position: {lat: location.location.lat, lng: location.location.lng}, // sets position of marker to specified location
@@ -113,7 +111,6 @@ closeModal() {
           link: location.link
         });
         marker.addListener('click', 
-        // function() { infowindow(mapConfig, marker)}
         () => { 
           this.setState({
             modalIsOpen: true,
@@ -128,12 +125,7 @@ closeModal() {
         }
       )
       })
-  // const infowindow = (mapConfig, marker) => {
-  //   return new google.maps.InfoWindow({
-  //     content: jsxToString(DetailWindow(marker.title, marker.addressString, marker.buckyID, marker.imgFileName))})
-  //     .open(mapConfig, marker);
-  // } 
-    }
+    } else { return }
   }
 
   render() {
@@ -153,10 +145,10 @@ closeModal() {
           style={customStyles}
           contentLabel="Example Modal"
         >
-          <h2 ref={subtitle => this.subtitle = subtitle}>{this.state.currentBucky.title}</h2>
-          <h2 ref={subtitle => this.subtitle = subtitle}>{this.state.currentBucky.addressString}</h2>
-          <h2 ref={subtitle => this.subtitle = subtitle}><a href={this.state.currentBucky.link}>More Info</a></h2>
-          <img
+          <h2 className='ModalComponent' ref={subtitle => this.subtitle = subtitle}>{this.state.currentBucky.title}</h2>
+          <h3 className='ModalComponent' ref={subtitle => this.subtitle = subtitle}>{this.state.currentBucky.addressString}</h3>
+          <h4 className='ModalComponent' ref={subtitle => this.subtitle = subtitle}><a href={this.state.currentBucky.link}>More Info</a></h4>
+          <img className='ModalComponent'
               src={`https://deliandigital.com/wp-content/uploads/2018/06/${this.state.currentBucky.imgFileName}`} width="30%" height="auto"/>
           <button onClick={this.closeModal}>close</button>
         </Modal>
