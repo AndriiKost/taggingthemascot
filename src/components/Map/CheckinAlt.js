@@ -64,8 +64,13 @@ class CheckinAlt extends React.Component {
   }
 
     initialCheckInHandler = () => {
+      console.log('initialcheckinStart')
+      this.setState({loadingForGeolocation: true, distance: ''})
+      console.log('From the props -> ',this.props.lat, this.props.lng)
+      this.props.onClick().then(console.log('Call Back =>',this.props.lat, this.props.lng)).then(this.setState({checkIn: false, loadingForGeolocation: false}))
+
       console.log(this.props.lat,this.props.lng)
-        this.setState({checkIn: true})
+        // this.setState({checkIn: true})
         // console.log(this.state.buckies)
         // find closest bucky
         // const closest = this.state.buckies.reduce((lowest, cur) => {
@@ -92,6 +97,7 @@ class CheckinAlt extends React.Component {
           }
         }) 
         // console.log('#######ALERT ===> ',this.state.buckyNameTagged)
+        console.log('initialcheckinFinish')
         closest ? closest < 30 ? ( db.updateScore(), db.removeBuckyFromTheUserList(this.state.buckyToRemove), this.setState({distance: 'Congratulations! You have tagged ' + this.state.buckyNameTagged + '!'}) ) : this.setState({distance: 'Can not find any Bucky near you. You are ' + closest + ' feet away'}) : null
     }
 
@@ -105,7 +111,7 @@ class CheckinAlt extends React.Component {
     return (
       <div>
         
-      {(this.props.lat !== null && this.props.lng !== null && !this.state.loadingForGeolocation) ?
+      {(!this.state.loadingForGeolocation) ?
         !this.state.checkIn ? <button onClick={this.initialCheckInHandler}>Check in</button> : <button onClick={this.refreshLocation}> Get New Location </button>
       : <h5>Getting location</h5>}
 

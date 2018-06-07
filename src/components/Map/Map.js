@@ -90,10 +90,11 @@ closeModal() {
     )
     this.state.locations = dataArr
     
-    // this.loadMap(); // call loadMap function to load the google map
+    this.loadMap(43.0991371, -89.3111176); // call loadMap function to load the google map
   }
 
-  loadMap() {
+  loadMap(defLong, defLat) {
+    this.setState({loading: true})
     console.log('loadMap()', this.state.longitude, this.state.latitude)
     if (this.props && this.props.google) { // checks to make sure that props have been passed
       const {google} = this.props; // sets props equal to google
@@ -102,8 +103,7 @@ closeModal() {
       const mapRef = this.refs.map; // looks for HTML div ref 'map'. Returned in render below.
       const node = ReactDOM.findDOMNode(mapRef); // finds the 'map' div in the React DOM, names it node
 
-      let point = new google.maps.LatLng(this.state.latitude, 
-        this.state.longitude)
+      let point = new google.maps.LatLng(defLong, defLat)
 
       let mapConfig = Object.assign({}, {
         center: point,// {lat: 43.0731, lng: -89.4012}, // sets center of google map to NYC.
@@ -141,7 +141,7 @@ closeModal() {
       )
 
       const UserMarker = (this.state.latitude !== null && this.state.longitude !== null) ? new google.maps.Marker({
-        position: {lat: this.state.latitude, lng: this.state.longitude},
+        position: point,
         map: this.map,
         title: 'You are here',
         icon: userMarker
@@ -183,16 +183,19 @@ closeModal() {
         latitude,
         longitude
       });
-      this.loadMap();
     } catch (error) {
       console.log(error);
     }
+
   };
 
   getCurrentPosition = (options = {}) => {
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(resolve, reject, options);
+      this.loadMap(this.state.latitude, this.state.longitude);
+      this.setState({loading: false})
     });
+    
   };
 
   render() {
