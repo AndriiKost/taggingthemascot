@@ -11,11 +11,12 @@ import CheckIn from './CheckIn';
 import './MapPage.css';
 
 class MapPage extends Component {
+
     render() {
         return (
             <div className='Map'>
                 <InitialMap />
-                <CheckIn />
+                {/* <CheckIn /> */}
             </div>
         );
     }

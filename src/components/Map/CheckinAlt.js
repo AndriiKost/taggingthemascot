@@ -1,9 +1,7 @@
 import React from 'react';
-import {geolocated} from 'react-geolocated';
-import { db } from '../firebase';
-import * as routes from '../constants/routes';
+import { db } from '../../firebase';
  
-class CheckIn extends React.Component {
+class CheckinAlt extends React.Component {
   constructor(props) {
     super(props)
   
@@ -12,7 +10,8 @@ class CheckIn extends React.Component {
         distance: '',
         buckyToRemove: '',
         buckyNameTagged: '',
-        buckies: []
+        buckies: [],
+        loadingForGeolocation: true
     }
   }
 
@@ -34,6 +33,7 @@ class CheckIn extends React.Component {
         lng: el.geometry.coordinates[0]})
       )
       this.state.buckies = dataArr
+      this.state.loadingForGeolocation = false
     }
 
     measure = (lat1, lon1, lat2, lon2) => {  // generally used geo measurement function
@@ -64,7 +64,7 @@ class CheckIn extends React.Component {
   }
 
     initialCheckInHandler = () => {
-      console.log(this.props.coords.latitude,this.props.coords.longitude)
+      console.log(this.props.lat,this.props.lng)
         this.setState({checkIn: true})
         // console.log(this.state.buckies)
         // find closest bucky
@@ -76,7 +76,7 @@ class CheckIn extends React.Component {
           lowest.lat && lowest.lng ? cur = lowest : null;
 
           if (cur.lat !== undefined || cur.lng !== undefined) {
-            const distanceFunc = this.findClosestBucky(this.props.coords.latitude,this.props.coords.longitude, cur.lat, cur.lng, cur.id);
+            const distanceFunc = this.findClosestBucky(this.props.lat,this.props.lng, cur.lat, cur.lng, cur.id);
             // manual coordinates for testing
             // const distanceFunc = this.findClosestBucky(43.074119262953495,-89.45224463939667, cur.lat, cur.lng, cur.id);
             // check if lowest is same as rendered
@@ -96,30 +96,23 @@ class CheckIn extends React.Component {
     }
 
     refreshLocation = () => {
-      window.location.reload();
+      this.setState({loadingForGeolocation: true, distance: ''})
+      console.log('From the props -> ',this.props.lat, this.props.lng)
+      this.props.onClick().then(console.log('Call Back =>',this.props.lat, this.props.lng)).then(this.setState({checkIn: false, loadingForGeolocation: false}))
     }
 
   render() {
-      const coordinates = !this.props.isGeolocationAvailable
-      ? <div>Your browser does not support Geolocation</div>
-      : !this.props.isGeolocationEnabled
-        ? <div>Geolocation is not enabled</div>
-        : this.props.coords
-          ? !this.state.checkIn ? <button onClick={this.initialCheckInHandler}>Check in</button> : <button onClick={this.refreshLocation}> Get New Location </button>
-          : <div>Getting the location data&hellip; </div>;
+    return (
+      <div>
+        
+      {(this.props.lat !== null && this.props.lng !== null && !this.state.loadingForGeolocation) ?
+        !this.state.checkIn ? <button onClick={this.initialCheckInHandler}>Check in</button> : <button onClick={this.refreshLocation}> Get New Location </button>
+      : <h5>Getting location</h5>}
 
-          return (
-            <div>
-                {this.props.loading ? coordinates : 'Getting the location data'}
-                <h5>{this.state.distance}</h5>
-            </div>
-          )
+      <h5>{this.state.distance}</h5>
+      </div>
+    )
   }
 }
  
-export default geolocated({
-  positionOptions: {
-    enableHighAccuracy: true,
-  },
-  userDecisionTimeout: 10000,
-})(CheckIn);
+export default CheckinAlt;

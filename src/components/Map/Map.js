@@ -5,9 +5,11 @@ import { db } from '../../firebase/index'
 
 // import buckyIcon from '../../assets/buckyIcon.png'
 import buckyIcon from '../../assets/images/icons/buckies/active.svg'
+import userMarker from '../../assets/images/icons/buckies/userMarker.png'
 import { buckies } from '../data/index'
 
-import DetailWindow from './DetailWindow';
+import Checkin from '../CheckIn'
+import CheckinAlt from './CheckinAlt';
 import jsxToString from 'jsx-to-string';
 
 import Modal from 'react-modal';
@@ -34,7 +36,11 @@ constructor() {
     locations: [],
     modalIsOpen: false,
     currentBucky: '',
-    loading: true
+    loading: true,
+    currentCoordinates: '',
+    latitude: null,
+    longitude: null,
+    loadingForGeolocation: true
   }
 
     this.openModal = this.openModal.bind(this);
@@ -57,6 +63,11 @@ closeModal() {
 }
 
   componentDidMount() {
+    // this.getCoordinatesFromNavigator()
+    if ("geolocation" in navigator) {
+      this.loadPosition();
+    }
+
     db.getBuckies().then( snapshot =>
     this.updateStateWithLocations(snapshot.val()));
   }
@@ -79,10 +90,11 @@ closeModal() {
     )
     this.state.locations = dataArr
     
-    this.loadMap(); // call loadMap function to load the google map
+    // this.loadMap(); // call loadMap function to load the google map
   }
 
   loadMap() {
+    console.log('loadMap()', this.state.longitude, this.state.latitude)
     if (this.props && this.props.google) { // checks to make sure that props have been passed
       const {google} = this.props; // sets props equal to google
       const maps = google.maps; // sets maps to google maps props
@@ -90,8 +102,11 @@ closeModal() {
       const mapRef = this.refs.map; // looks for HTML div ref 'map'. Returned in render below.
       const node = ReactDOM.findDOMNode(mapRef); // finds the 'map' div in the React DOM, names it node
 
-      const mapConfig = Object.assign({}, {
-        center: {lat: 43.0731, lng: -89.4012}, // sets center of google map to NYC.
+      let point = new google.maps.LatLng(this.state.latitude, 
+        this.state.longitude)
+
+      let mapConfig = Object.assign({}, {
+        center: point,// {lat: 43.0731, lng: -89.4012}, // sets center of google map to NYC.
         zoom: 13, // sets zoom. Lower numbers are zoomed further out.
         mapTypeId: 'roadmap' // optional main map layer. Terrain, satellite, hybrid or roadmap--if unspecified, defaults to roadmap.
       })
@@ -124,9 +139,61 @@ closeModal() {
           })
         }
       )
+
+      const UserMarker = (this.state.latitude !== null && this.state.longitude !== null) ? new google.maps.Marker({
+        position: {lat: this.state.latitude, lng: this.state.longitude},
+        map: this.map,
+        title: 'You are here',
+        icon: userMarker
+      }) : null
       })
     } else { return }
   }
+
+  // // getCoordinates from navigator
+  // getCoordinatesFromNavigator = () => {
+  //   if (!navigator.geolocation){
+  //     console.log("<p>Geolocation is not supported by your browser</p>");
+  //     return;
+  //   }
+  
+  //   const success = (position) => {
+  //     // update state with current coordinates
+  //     this.setState({
+  //       currentCoordinates: {
+  //         lat: position.coords.latitude,
+  //         lng: position.coords.longitude
+  //       }
+  //     })
+
+  //     console.log('from state -> ',this.state.currentCoordinates.lat, this.state.currentCoordinates.lng)
+  //   }
+  
+  //   const error = () => console.log("Unable to retrieve your location")
+  
+  //   navigator.geolocation.getCurrentPosition(success, error);
+  // }
+
+  loadPosition = async () => {
+    console.log('loadPosition from Map component')
+    try {
+      const position = await this.getCurrentPosition();
+      const { latitude, longitude } = position.coords;
+      this.setState({
+        latitude,
+        longitude
+      });
+      this.loadMap();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  getCurrentPosition = (options = {}) => {
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject, options);
+    });
+  };
 
   render() {
     const style = { // MUST specify dimensions of the Google map or it will not work. Also works best when style is specified inside the render function and created as an object
@@ -135,9 +202,11 @@ closeModal() {
     }
 
     return ( // in our return function you must return a div with ref='map' and style.
+    <div>
       <div ref="map" style={style}>
         {/* <div className='loadingMap'>loading map...</div> */}
           <div className='loading'><ScaleLoader color={'#fc0d1b'}  loading={this.state.loading} /></div>
+          
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
@@ -152,6 +221,12 @@ closeModal() {
               src={`https://deliandigital.com/wp-content/uploads/2018/06/${this.state.currentBucky.imgFileName}`} width="30%" height="auto"/>
           <button onClick={this.closeModal}>close</button>
         </Modal>
+      </div>
+        {/* <Checkin loading={this.state.loading} lat={this.state.latitude} lng={this.state.longitude} onClick={this.loadPosition}/> */}
+        {/* <p>Latitude {this.state.latitude}</p> */}
+        {/* <p>Longitude {this.state.longitude}</p> */}
+        {/* <button onClick={this.loadPosition}>Get coords</button> */}
+        <CheckinAlt loading={this.state.loading} lat={this.state.latitude} lng={this.state.longitude} onClick={this.loadPosition}/>
       </div>
     )
   }
