@@ -33,7 +33,7 @@ class CheckinAlt extends React.Component {
         lng: el.geometry.coordinates[0]})
       )
       this.state.buckies = dataArr
-      this.state.loadingForGeolocation = false
+      this.setState({ loadingForGeolocation: false })
     }
 
     measure = (lat1, lon1, lat2, lon2) => {  // generally used geo measurement function

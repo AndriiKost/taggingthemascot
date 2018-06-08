@@ -140,12 +140,12 @@ closeModal() {
         }
       )
 
-      const UserMarker = (this.state.latitude !== null && this.state.longitude !== null) ? new google.maps.Marker({
+      const UserMarker = new google.maps.Marker({
         position: point,
         map: this.map,
         title: 'You are here',
         icon: userMarker
-      }) : null
+      })
       })
     } else { return }
   }
