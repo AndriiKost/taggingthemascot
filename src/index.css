@@ -230,6 +230,17 @@ background-color: #fff;
 .Checklist-address {
   color: darkblue;
 }
+.copyBox {
+  position: fixed;
+  top: 45%;
+  left: 40%;
+  display: block;
+  padding: 5%;
+  background-color: #BB241F;
+  border: 1px solid #971C18;
+  color: #fff;
+  font-size: 2em;
+}
 /* #####======= SCREENS ========##### */
 @media screen and (max-width: 350px) {
   .buckyHeader h2 {

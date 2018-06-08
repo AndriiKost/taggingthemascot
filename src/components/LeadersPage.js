@@ -43,8 +43,7 @@ class LeadersPage extends Component {
       return b.teamScore-a.teamScore
     });
 
-    this.state.team = newArray
-    this.setState({ loading: false })
+    this.setState({ team: newArray, loading: false })
   }
 
   render() {

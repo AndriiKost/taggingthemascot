@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
-
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { db } from '../../firebase/index'
 
-// import buckyIcon from '../../assets/buckyIcon.png'
 import buckyIcon from '../../assets/images/icons/buckies/active.svg'
 import userMarker from '../../assets/images/icons/buckies/userMarker.png'
 import { buckies } from '../data/index'
@@ -40,7 +39,8 @@ constructor() {
     currentCoordinates: '',
     latitude: null,
     longitude: null,
-    loadingForGeolocation: true
+    loadingForGeolocation: true,
+    copied: false,
   }
 
     this.openModal = this.openModal.bind(this);
@@ -59,7 +59,7 @@ afterOpenModal() {
 }
 
 closeModal() {
-  this.setState({modalIsOpen: false});
+  this.setState({modalIsOpen: false, copied: false});
 }
 
   componentDidMount() {
@@ -88,9 +88,11 @@ closeModal() {
         lng: el.geometry.coordinates[0]
     }})
     )
-    this.state.locations = dataArr
+    //this.state.locations = dataArr
+
+    this.setState({ locations: dataArr })
     
-    this.loadMap(43.0991371, -89.3111176); // call loadMap function to load the google map
+    //this.loadMap(43.0991371, -89.3111176); // call loadMap function to load the google map
   }
 
   loadMap(defLong, defLat) {
@@ -107,7 +109,7 @@ closeModal() {
 
       let mapConfig = Object.assign({}, {
         center: point,// {lat: 43.0731, lng: -89.4012}, // sets center of google map to NYC.
-        zoom: 13, // sets zoom. Lower numbers are zoomed further out.
+        zoom: 15, // sets zoom. Lower numbers are zoomed further out.
         mapTypeId: 'roadmap' // optional main map layer. Terrain, satellite, hybrid or roadmap--if unspecified, defaults to roadmap.
       })
 
@@ -150,30 +152,6 @@ closeModal() {
     } else { return }
   }
 
-  // // getCoordinates from navigator
-  // getCoordinatesFromNavigator = () => {
-  //   if (!navigator.geolocation){
-  //     console.log("<p>Geolocation is not supported by your browser</p>");
-  //     return;
-  //   }
-  
-  //   const success = (position) => {
-  //     // update state with current coordinates
-  //     this.setState({
-  //       currentCoordinates: {
-  //         lat: position.coords.latitude,
-  //         lng: position.coords.longitude
-  //       }
-  //     })
-
-  //     console.log('from state -> ',this.state.currentCoordinates.lat, this.state.currentCoordinates.lng)
-  //   }
-  
-  //   const error = () => console.log("Unable to retrieve your location")
-  
-  //   navigator.geolocation.getCurrentPosition(success, error);
-  // }
-
   loadPosition = async () => {
     console.log('loadPosition from Map component')
     try {
@@ -183,6 +161,8 @@ closeModal() {
         latitude,
         longitude
       });
+      this.loadMap(this.state.latitude, this.state.longitude);
+      this.setState({loading: false})
     } catch (error) {
       console.log(error);
     }
@@ -192,8 +172,8 @@ closeModal() {
   getCurrentPosition = (options = {}) => {
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(resolve, reject, options);
-      this.loadMap(this.state.latitude, this.state.longitude);
-      this.setState({loading: false})
+      //this.loadMap(this.state.latitude, this.state.longitude);
+      
     });
     
   };
@@ -218,7 +198,13 @@ closeModal() {
           contentLabel="Example Modal"
         >
           <h2 className='ModalComponent' ref={subtitle => this.subtitle = subtitle}>{this.state.currentBucky.title}</h2>
-          <h3 className='ModalComponent' ref={subtitle => this.subtitle = subtitle}>{this.state.currentBucky.addressString}</h3>
+            <CopyToClipboard text={this.state.currentBucky.addressString}
+            onCopy={() => this.setState({copied: true})}>
+              <h3 className='ModalComponent' ref={subtitle => this.subtitle = subtitle}>
+                {this.state.currentBucky.addressString}
+              </h3>
+            </CopyToClipboard>
+            {this.state.copied ? <span className='copyBox'>Copied.</span> : null}
           <h4 className='ModalComponent' ref={subtitle => this.subtitle = subtitle}><a href={this.state.currentBucky.link}>More Info</a></h4>
           <img className='ModalComponent'
               src={`https://deliandigital.com/wp-content/uploads/2018/06/${this.state.currentBucky.imgFileName}`} width="30%" height="auto"/>

@@ -111,7 +111,7 @@ class CheckinAlt extends React.Component {
     return (
       <div>
         
-      {(!this.state.loadingForGeolocation) ?
+      {(!this.state.loadingForGeolocation && !this.props.loading) ?
         !this.state.checkIn ? <button onClick={this.initialCheckInHandler}>Check in</button> : <button onClick={this.refreshLocation}> Get New Location </button>
       : <h5>Getting location</h5>}
 

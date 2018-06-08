@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
-
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 import withAuthorization from './withAuthorization';
 import { db, auth } from '../firebase';
 import { updateBuckyScore } from '../firebase/db';
@@ -12,7 +12,8 @@ class BuckyCheckList extends Component {
   
   state = {
     buckies: [],
-    loading: true
+    loading: true,
+    copied: false
   }
 
   componentDidMount() {
@@ -57,17 +58,24 @@ render () {
               : null
 
             return(
-            <li>
+            <li key={el.id}>
               <p>
                 <a href={el.link}>
                   <img src={img} width="10%" height="auto"/>
                 </a>
               </p>
                 <p className='Checklist-name'>{el.name}</p>  
+
+                <CopyToClipboard text={el.address}
+                    onCopy={() => {this.setState({copied: true}), setTimeout(() => {
+                      this.setState({ copied: false })
+                    }, 2000)}}>
                 <p className='Checklist-address'>{el.address}</p>
+                </CopyToClipboard>
             </li>
             )})}
         </ul>
+        {this.state.copied ? <span className='copyBox'>Copied.</span> : null}
         </div>
     )
   }
