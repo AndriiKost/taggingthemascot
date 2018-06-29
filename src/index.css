@@ -5,7 +5,7 @@ body {
 }
 /* Header  */
 .buckyHeader {
-  background-color: rgba(187, 39, 31, 0.9);
+  background-color: rgb(183,22,30);
   position: absolute;
   top: 0;
   left: 0;
@@ -190,6 +190,10 @@ body {
   cursor: pointer;
   height: 45px;
 }
+.mascot-address:hover {
+  cursor: pointer;
+  color: #000;
+}
 .gradientSection form button:hover {
   background-color: #fff;
   color: #971C18;
@@ -225,10 +229,14 @@ background-color: #fff;
   width: 70%;
 }
 .Checklist-name {
-  color: red;
+  color: darkred;
 }
 .Checklist-address {
   color: darkblue;
+}
+.Checklist-address:hover {
+  cursor: pointer;
+  color: #000;
 }
 .copyBox {
   position: fixed;

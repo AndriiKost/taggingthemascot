@@ -9,7 +9,6 @@
         "address" : "22 S. Carroll St., Madison, WI 53703",
         "artistName" : "Barbara Vater",
         "id" : "1D",
-        "imgFileName" : "Class-Act_Front.jpg",
         "link" : "https://buckyonparade.com/product/class-act-2/",
         "locationName" : "Best Western Premier Park Hotel",
         "name" : "Class Act",
@@ -92,7 +91,7 @@
         "imgFileName" : "Bucky-on-Guard_Front.jpg",
         "link" : "https://buckyonparade.com/product/bucky-on-guard-2/",
         "locationName" : "Wisconsin State Capitol",
-        "name" : "Bucky on Guard",
+        "name" : "Mascot on Guard",
         "sponsor" : "TWO MEN AND A TRUCK"
       },
       "type" : "Feature"
@@ -108,7 +107,7 @@
         "imgFileName" : "Bucky-exe_Front.jpg",
         "link" : "https://buckyonparade.com/product/bucky-exe/",
         "locationName" : "Wisconsin State Capitol",
-        "name" : "Bucky.exe",
+        "name" : "Mascot.exe",
         "sponsor" : "UW Credit Union"
       },
       "type" : "Feature"
@@ -124,7 +123,7 @@
         "imgFileName" : "Lucky-Bucky_Front.jpg",
         "link" : "https://buckyonparade.com/product/lucky-bucky/",
         "locationName" : "Wisconsin State Capitol",
-        "name" : "Lucky Bucky",
+        "name" : "Lucky Mascot",
         "sponsor" : "Underwood Events"
       },
       "type" : "Feature"
@@ -156,7 +155,7 @@
         "imgFileName" : "5th-Quarter_Front.jpg",
         "link" : "https://buckyonparade.com/product/5th-quarter-2/",
         "locationName" : "AC Hotel by Marriott (indoor)",
-        "name" : "5th Quarter",
+        "name" : "After The Game",
         "sponsor" : "Lands' End"
       },
       "type" : "Feature"
@@ -172,7 +171,7 @@
         "imgFileName" : "Bucky-Energized_Front.jpg",
         "link" : "https://buckyonparade.com/product/bucky-energized/",
         "locationName" : "City County Building",
-        "name" : "Bucky Energized!",
+        "name" : "Mascot Energized!",
         "sponsor" : "Madison Gas and Electric Foundation"
       },
       "type" : "Feature"
@@ -188,7 +187,7 @@
         "imgFileName" : "A-Taste-Of-Madison_Front.jpg",
         "link" : "https://buckyonparade.com/product/a-taste-of-madison/",
         "locationName" : "Hilton Madison Monona Terrace",
-        "name" : "A Taste of Madison",
+        "name" : "Taste of Madison",
         "sponsor" : "Madison Festivals, Inc."
       },
       "type" : "Feature"
@@ -204,7 +203,7 @@
         "imgFileName" : "Bucky-Lloyd-Wright_Front.jpg",
         "link" : "https://buckyonparade.com/product/bucky-lloyd-wright-2/",
         "locationName" : "Monona Terrace Community and Convention Center - Lake Vista Café",
-        "name" : "Bucky Lloyd Wright",
+        "name" : "Mascot Lloyd Wright",
         "sponsor" : "Oak Park Place"
       },
       "type" : "Feature"
@@ -220,7 +219,7 @@
         "imgFileName" : "I-Am-Bucky_Front.jpg",
         "link" : "https://buckyonparade.com/product/i-am-bucky/",
         "locationName" : "Monona Terrace Community and Convention Center - Olin Terrace",
-        "name" : "I Am Bucky",
+        "name" : "I Am Mascot",
         "sponsor" : ""
       },
       "type" : "Feature"
@@ -236,7 +235,7 @@
         "imgFileName" : "Signature-Bucky_Front.jpg",
         "link" : "https://buckyonparade.com/product/signature-bucky/",
         "locationName" : "",
-        "name" : "Signature Bucky",
+        "name" : "Signature Mascot",
         "sponsor" : "Madison Area Sports Commission"
       },
       "type" : "Feature"
@@ -268,7 +267,7 @@
         "imgFileName" : "Animals-Need-Bucky-Too_Front.jpg",
         "link" : "https://buckyonparade.com/product/animals-need-bucky-too/",
         "locationName" : "Corner of East Washington and Pinckney",
-        "name" : "Animals Need Bucky Too",
+        "name" : "Animals Need Mascot Too",
         "sponsor" : "BerbeeWalsh Foundation and Debbie Cervenka"
       },
       "type" : "Feature"
@@ -332,7 +331,7 @@
         "imgFileName" : "Bright-Idea-Bucky_Front.jpg",
         "link" : "https://buckyonparade.com/product/bright-idea-bucky-2/",
         "locationName" : "Madison Public Library - Central Branch",
-        "name" : "Bright Idea Bucky",
+        "name" : "Bright Idea Mascot",
         "sponsor" : "Capitol Lakes"
       },
       "type" : "Feature"
@@ -476,7 +475,7 @@
         "imgFileName" : "Bucky-at-the-Terrace_Front.jpg",
         "link" : "https://buckyonparade.com/product/bucky-at-the-terrace-2/",
         "locationName" : "Frances Street Collectivo",
-        "name" : "Bucky at the Terrace",
+        "name" : "Mascot at the Terrace",
         "sponsor" : "Deb, Dean and Jenna Archer"
       },
       "type" : "Feature"
@@ -492,7 +491,7 @@
         "imgFileName" : "Bucky-Howd-You-Get-So-FLY_Front.jpg",
         "link" : "https://buckyonparade.com/product/bucky-howd-you-get-so-fly/",
         "locationName" : "Urban Outfitters",
-        "name" : "Bucky How'd You Get So FLY?",
+        "name" : "Mascot How'd You Get So FLY?",
         "sponsor" : "WHEELS UP"
       },
       "type" : "Feature"
@@ -540,7 +539,7 @@
         "imgFileName" : "GameDayBucky_Front.jpg",
         "link" : "https://buckyonparade.com/product/gamedaybucky/",
         "locationName" : "University Book Store",
-        "name" : "#GameDayBucky",
+        "name" : "#GameDayMascot",
         "sponsor" : "University Book Store"
       },
       "type" : "Feature"
@@ -556,7 +555,7 @@
         "imgFileName" : "Bucky-Alvarez_Front.jpg",
         "link" : "https://buckyonparade.com/product/bucky-alvarez/",
         "locationName" : "Camp Randall",
-        "name" : "Bucky Alvarez",
+        "name" : "Coach Mascot",
         "sponsor" : "UW Athletics"
       },
       "type" : "Feature"
@@ -572,7 +571,7 @@
         "imgFileName" : "",
         "link" : "https://buckyonparade.com/product/crazylegs-bucky/",
         "locationName" : "University of Wisconsin Police Dept. (Coming later this summer)",
-        "name" : "Crazylegs Bucky",
+        "name" : "Crazylegs Mascot",
         "sponsor" : "Associated Bank / Oakland On Monroe / HotelRED"
       },
       "type" : "Feature"
@@ -588,7 +587,7 @@
         "imgFileName" : "We-Are-Bucky_Front.jpg",
         "link" : "https://buckyonparade.com/product/we-are-bucky/",
         "locationName" : "Smith Hall",
-        "name" : "We Are Bucky",
+        "name" : "We Are Wisconsin",
         "sponsor" : "Wipfli LLP"
       },
       "type" : "Feature"
@@ -604,7 +603,7 @@
         "imgFileName" : "And-On-Wisconsin_Front.jpg",
         "link" : "https://buckyonparade.com/product/and-on-wisconsin-2/",
         "locationName" : "Kohl Center",
-        "name" : "...And On Wisconsin!",
+        "name" : "On Wisconsin!",
         "sponsor" : "Krupp General Contractors"
       },
       "type" : "Feature"
@@ -636,7 +635,7 @@
         "imgFileName" : "Superbuck_Front.jpg",
         "link" : "https://buckyonparade.com/product/superbuck/",
         "locationName" : "",
-        "name" : "Superbuck",
+        "name" : "SuperMascot",
         "sponsor" : "Dr. Eric teDuits\rChildren's Dental Center of Madison, S.C."
       },
       "type" : "Feature"
@@ -652,7 +651,7 @@
         "imgFileName" : "Bucky-come-se-Picasso_Front.jpg",
         "link" : "https://buckyonparade.com/product/bucky-come-se-picasso-2/",
         "locationName" : "Chazen Museum of Art",
-        "name" : "Bucky come se Picasso",
+        "name" : "Mascot come se Picasso",
         "sponsor" : "Neider & Boucher, S.C."
       },
       "type" : "Feature"
@@ -684,7 +683,7 @@
         "imgFileName" : "Baller-Bucky_Front.jpg",
         "link" : "https://buckyonparade.com/product/baller-bucky/",
         "locationName" : "Red Gym",
-        "name" : "Baller Bucky",
+        "name" : "Baller Mascot",
         "sponsor" : "John C. Sheehan, '83"
       },
       "type" : "Feature"
@@ -716,7 +715,7 @@
         "imgFileName" : "Visible-Bucky_Front.jpg",
         "link" : "https://buckyonparade.com/product/visible-bucky/",
         "locationName" : "Science Hall",
-        "name" : "Visible Bucky",
+        "name" : "Visible Mascot",
         "sponsor" : "Best Western PLUS InnTowner Madison"
       },
       "type" : "Feature"
@@ -732,7 +731,7 @@
         "imgFileName" : "Graduation-Bucky_Front.jpg",
         "link" : "https://buckyonparade.com/product/graduation-bucky/",
         "locationName" : "Bascom Hall",
-        "name" : "Graduation Bucky",
+        "name" : "Graduation Mascot",
         "sponsor" : ""
       },
       "type" : "Feature"
@@ -748,7 +747,7 @@
         "imgFileName" : "Blooming-Bucky_Front.jpg",
         "link" : "https://buckyonparade.com/product/blooming-bucky-2/",
         "locationName" : "",
-        "name" : "Blooming Bucky",
+        "name" : "Blooming Mascot",
         "sponsor" : ""
       },
       "type" : "Feature"
@@ -764,7 +763,7 @@
         "imgFileName" : "Celestial-Bucky_Front.jpg",
         "link" : "https://buckyonparade.com/product/celestial-bucky/",
         "locationName" : "",
-        "name" : "Celestial Bucky",
+        "name" : "Celestial Mascot",
         "sponsor" : ""
       },
       "type" : "Feature"
@@ -796,7 +795,7 @@
         "imgFileName" : "Major-Bucky_Front.jpg",
         "link" : "https://buckyonparade.com/product/major-bucky/",
         "locationName" : "UW Marching Band Practice Fields",
-        "name" : "Major Bucky",
+        "name" : "Major Mascot",
         "sponsor" : "Mid-West Family Broadcasting"
       },
       "type" : "Feature"
@@ -812,7 +811,7 @@
         "imgFileName" : "Goodnight-Bucky_Front.jpg",
         "link" : "https://buckyonparade.com/product/goodnight-bucky-2/",
         "locationName" : "Picnic Point Entry",
-        "name" : "Goodnight Bucky",
+        "name" : "Goodnight Mascot",
         "sponsor" : ""
       },
       "type" : "Feature"
@@ -828,7 +827,7 @@
         "imgFileName" : "Dream-Big-Bucky_Front.jpg",
         "link" : "https://buckyonparade.com/product/dream-big-bucky/",
         "locationName" : "UW Hospital and Clinics",
-        "name" : "Dream Big Bucky",
+        "name" : "Dream Big Mascot",
         "sponsor" : "American Family Children's Hospital"
       },
       "type" : "Feature"
@@ -844,7 +843,7 @@
         "imgFileName" : "Flamingo-Bucky_Front.jpg",
         "link" : "https://buckyonparade.com/product/flamingo-bucky-2/",
         "locationName" : "University of Wisconsin Foundation",
-        "name" : "Flamingo Bucky",
+        "name" : "Flamingo Mascot",
         "sponsor" : ""
       },
       "type" : "Feature"
@@ -876,7 +875,7 @@
         "imgFileName" : "Retro-Bucky_Front.jpg",
         "link" : "https://buckyonparade.com/product/retro-bucky/",
         "locationName" : "Wisconsin Alumni Association",
-        "name" : "Retro Bucky",
+        "name" : "Retro Mascot",
         "sponsor" : "Wisconsin Alumni Association, Wisconsin Foundation and Alumni Association"
       },
       "type" : "Feature"
@@ -908,7 +907,7 @@
         "imgFileName" : "Bucky-Badger_Front.jpg",
         "link" : "https://buckyonparade.com/product/buck-y-badger-2/",
         "locationName" : "Cannery Square",
-        "name" : "Buck-y Badger",
+        "name" : "Bucks and Mascots Oh My",
         "sponsor" : "Hottmann Construction Company, Inc."
       },
       "type" : "Feature"
@@ -924,7 +923,7 @@
         "imgFileName" : "Bucky-Bot_Front.jpg",
         "link" : "https://buckyonparade.com/product/bucky-bot/",
         "locationName" : "Madison College",
-        "name" : "Bucky Bot",
+        "name" : "Mascot Bot",
         "sponsor" : "Madison College"
       },
       "type" : "Feature"
@@ -940,7 +939,7 @@
         "imgFileName" : "Broadcaster-Bucky_Front.jpg",
         "link" : "https://buckyonparade.com/product/broadcaster-bucky/",
         "locationName" : "Warner Park Community Recreation Center",
-        "name" : "Broadcaster Bucky",
+        "name" : "Broadcaster Mascot",
         "sponsor" : "WMTV NBC15"
       },
       "type" : "Feature"
@@ -1004,7 +1003,7 @@
         "imgFileName" : "Bucky-de-los-Muertos_Front.jpg",
         "link" : "https://buckyonparade.com/product/bucky-de-los-muertos-2/",
         "locationName" : "Monty's Blue Plate Diner",
-        "name" : "Bucky de los Muertos",
+        "name" : "Mascot de los Muertos",
         "sponsor" : ""
       },
       "type" : "Feature"
@@ -1020,7 +1019,7 @@
         "imgFileName" : "Our-Hearts-Belong-to-Bucky_Front.jpg",
         "link" : "https://buckyonparade.com/product/our-hearts-belong-to-bucky/",
         "locationName" : "Goodman Community Center",
-        "name" : "Our Hearts Belong to Bucky",
+        "name" : "Our Mascot",
         "sponsor" : ""
       },
       "type" : "Feature"
@@ -1052,7 +1051,7 @@
         "imgFileName" : "Hip-Buckster_Front.jpg",
         "link" : "https://buckyonparade.com/product/hip-buckster/",
         "locationName" : "Olbrich Park",
-        "name" : "Hip Buckster",
+        "name" : "Hip Mascotster",
         "sponsor" : "Adams Outdoor Advertising"
       },
       "type" : "Feature"
@@ -1084,7 +1083,7 @@
         "imgFileName" : "Farmer-Bucky_Front.jpg",
         "link" : "https://buckyonparade.com/product/farmer-bucky/",
         "locationName" : "Winnequah Park",
-        "name" : "Farmer Bucky",
+        "name" : "Farmer Mascot",
         "sponsor" : "Lycon"
       },
       "type" : "Feature"
@@ -1100,7 +1099,7 @@
         "imgFileName" : "Bucky-in-Bearadise_Front.jpg",
         "link" : "https://buckyonparade.com/product/bucky-in-bearadise/",
         "locationName" : "Goodman Pool",
-        "name" : "Bucky in Bearadise",
+        "name" : "Mascot in Bearadise",
         "sponsor" : "Three Bears Resort"
       },
       "type" : "Feature"
@@ -1148,7 +1147,7 @@
         "imgFileName" : "Rugby-Bucky_Front.jpg",
         "link" : "https://buckyonparade.com/product/rugby-bucky/",
         "locationName" : "Brittingham Park",
-        "name" : "Rugby Bucky",
+        "name" : "Rugby Mascot",
         "sponsor" : "Clan Buchanan"
       },
       "type" : "Feature"
@@ -1164,7 +1163,7 @@
         "imgFileName" : "Bucky-on-Ice_Front.jpg",
         "link" : "https://buckyonparade.com/product/bucky-on-ice-2/",
         "locationName" : "Brittingham Boathouse",
-        "name" : "Bucky on Ice",
+        "name" : "Mascot on Ice",
         "sponsor" : "WMTV NBC15"
       },
       "type" : "Feature"
@@ -1196,7 +1195,7 @@
         "imgFileName" : "All-Hands-on-Bucky_Front.jpg",
         "link" : "https://buckyonparade.com/product/all-hands-on-bucky-2/",
         "locationName" : "Villager Shopping Center",
-        "name" : "All Hands on Bucky",
+        "name" : "All Hands on Mascot",
         "sponsor" : "CUNA Mutual Group"
       },
       "type" : "Feature"
@@ -1212,7 +1211,7 @@
         "imgFileName" : "BioTech-Bucky_Front.jpg",
         "link" : "https://buckyonparade.com/product/biotech-bucky/",
         "locationName" : "Agora at Fitchburg Center",
-        "name" : "BioTech Bucky",
+        "name" : "BioTech Mascot",
         "sponsor" : "Fitchburg Community & Economic Development Authority"
       },
       "type" : "Feature"
@@ -1228,7 +1227,7 @@
         "imgFileName" : "Bike-the-Burg-Bucky_Front.jpg",
         "link" : "https://buckyonparade.com/product/bike-the-burg-bucky/",
         "locationName" : "McKee Farms Park",
-        "name" : "Bike the 'Burg Bucky",
+        "name" : "Bike the 'Burg Mascot",
         "sponsor" : "Fitchburg Chamber Visitor + Business Bureau"
       },
       "type" : "Feature"
@@ -1292,7 +1291,7 @@
         "imgFileName" : "Bucky-the-Builder_Front.jpg",
         "link" : "https://buckyonparade.com/product/bucky-the-builder/",
         "locationName" : "Downtown Middleton",
-        "name" : "Bucky the Builder",
+        "name" : "Mascot the Builder",
         "sponsor" : "Dave Jones, Inc."
       },
       "type" : "Feature"
@@ -1308,7 +1307,7 @@
         "imgFileName" : "Work-Safe-Bucky_Front.jpg",
         "link" : "https://buckyonparade.com/product/work-safe-bucky-2/",
         "locationName" : "Lakeview Park",
-        "name" : "Work Safe Bucky",
+        "name" : "Work Safe Mascot",
         "sponsor" : "Tri-North Builders, Inc."
       },
       "type" : "Feature"
@@ -1324,7 +1323,7 @@
         "imgFileName" : "Jump-Around-Bucky_Front.jpg",
         "link" : "https://buckyonparade.com/product/jump-around-bucky/",
         "locationName" : "Hilldale Shopping Center",
-        "name" : "Jump Around Bucky",
+        "name" : "Jumping Mascot",
         "sponsor" : "The Great Dane Pub & Brewing Company"
       },
       "type" : "Feature"
@@ -1340,7 +1339,7 @@
         "imgFileName" : "Bucky-in-Red_Front.jpg",
         "link" : "https://buckyonparade.com/product/bucky-in-red/",
         "locationName" : "Hilldale Shopping Center",
-        "name" : "Bucky in Red",
+        "name" : "Mascot in Red",
         "sponsor" : ""
       },
       "type" : "Feature"

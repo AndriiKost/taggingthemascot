@@ -60,9 +60,9 @@ render () {
             return(
             <li key={el.id}>
               <p>
-                <a href={el.link}>
+                {/* <a href={el.link}>
                   <img src={img} width="10%" height="auto"/>
-                </a>
+                </a> */}
               </p>
                 <p className='Checklist-name'>{el.name}</p>  
 

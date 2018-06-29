@@ -200,21 +200,17 @@ closeModal() {
           <h2 className='ModalComponent' ref={subtitle => this.subtitle = subtitle}>{this.state.currentBucky.title}</h2>
             <CopyToClipboard text={this.state.currentBucky.addressString}
             onCopy={() => this.setState({copied: true})}>
-              <h3 className='ModalComponent' ref={subtitle => this.subtitle = subtitle}>
+              <h3 className='ModalComponent mascot-address' ref={subtitle => this.subtitle = subtitle}>
                 {this.state.currentBucky.addressString}
               </h3>
             </CopyToClipboard>
             {this.state.copied ? <span className='copyBox'>Copied.</span> : null}
           <h4 className='ModalComponent' ref={subtitle => this.subtitle = subtitle}><a href={this.state.currentBucky.link}>More Info</a></h4>
-          <img className='ModalComponent'
-              src={`https://deliandigital.com/wp-content/uploads/2018/06/${this.state.currentBucky.imgFileName}`} width="30%" height="auto"/>
+          {/* <img className='ModalComponent'
+              src={`https://deliandigital.com/wp-content/uploads/2018/06/${this.state.currentBucky.imgFileName}`} width="30%" height="auto"/> */}
           <button onClick={this.closeModal}>close</button>
         </Modal>
       </div>
-        {/* <Checkin loading={this.state.loading} lat={this.state.latitude} lng={this.state.longitude} onClick={this.loadPosition}/> */}
-        {/* <p>Latitude {this.state.latitude}</p> */}
-        {/* <p>Longitude {this.state.longitude}</p> */}
-        {/* <button onClick={this.loadPosition}>Get coords</button> */}
         <CheckinAlt loading={this.state.loading} lat={this.state.latitude} lng={this.state.longitude} onClick={this.loadPosition}/>
       </div>
     )
