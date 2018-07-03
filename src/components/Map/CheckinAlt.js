@@ -16,7 +16,6 @@ class CheckinAlt extends React.Component {
   }
 
     componentDidMount() {
-
       db.getBuckies().then( snapshot =>
         this.updateStateWithBuckiesData(snapshot.val()))
     }

@@ -28,11 +28,8 @@ class BuckyCheckList extends Component {
   }
 
   updateStateWithTeamData = (checklist) => {
-    console.log(checklist)
-    
     let dataArr = []
-
-    checklist.map(el => 
+    checklist ? checklist.map(el => 
       // Update state with Firebase Data
       dataArr.push({
       name: el.properties.name,
@@ -40,7 +37,7 @@ class BuckyCheckList extends Component {
       address: el.properties.address,
       imgFileName: el.properties.imgFileName,
       link: el.properties.link})
-    )
+    ) : alert('having problems to get checklist')
     this.state.buckies = dataArr
     this.setState({ loading: false })
   }

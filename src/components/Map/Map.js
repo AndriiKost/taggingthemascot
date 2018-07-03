@@ -75,7 +75,7 @@ closeModal() {
   updateStateWithLocations = ( buckies ) => {
     let dataArr = []
 
-    buckies.map(el => 
+    buckies ? buckies.map(el => 
       // Update state with Firebase Data
       dataArr.push({
       name: el.properties.name,
@@ -87,8 +87,7 @@ closeModal() {
         lat: el.geometry.coordinates[1],
         lng: el.geometry.coordinates[0]
     }})
-    )
-    //this.state.locations = dataArr
+    ) : alert('having problems to get mascots')
 
     this.setState({ locations: dataArr })
     
