@@ -4,7 +4,7 @@ body {
   font-family: Nunito, sans-serif;
 }
 /* Header  */
-.buckyHeader {
+.mascotHeader {
   background-color: rgb(183,22,30);
   position: absolute;
   top: 0;
@@ -13,17 +13,17 @@ body {
   height: 70px;
 }
 
-.buckyHeader img {
+.mascotHeader img {
   height: 70px;
 }
 
-.buckyHeader h2 {
+.mascotHeader h2 {
   position: absolute;
   font-size: 2em;
   /* color: rgb(124, 17, 8); */
   color: #fff;
   top: 0;
-  right: 0;
+  right: 10px;
   margin: 0;
   padding-top: 10px;
 }
@@ -251,19 +251,19 @@ background-color: #fff;
 }
 /* #####======= SCREENS ========##### */
 @media screen and (max-width: 350px) {
-  .buckyHeader h2 {
+  .mascotHeader h2 {
     font-size: 1em;
     padding-top: 6%;
   }
 }
 @media screen and (min-width: 351px) {
-  .buckyHeader h2 {
+  .mascotHeader h2 {
     font-size: 1.2em;
     padding-top: 4%;
   }
 }
 @media screen and (min-width: 500px) {
-  .buckyHeader h2 {
+  .mascotHeader h2 {
     font-size: 1.8em;
     padding-top: 2%;
   }
