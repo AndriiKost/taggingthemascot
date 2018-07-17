@@ -1,8 +1,7 @@
 {
-  "name": "amazing-bucky-race",
+  "name": "taggingthemascot",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://andriikost.github.io/dev-bucky",
   "dependencies": {
     "copy-to-clipboard": "^3.0.8",
     "firebase": "^5.0.2",
