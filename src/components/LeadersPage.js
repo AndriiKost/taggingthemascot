@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
-
-import withAuthorization from './withAuthorization';
-import { db, auth } from '../firebase';
-import { updateBuckyScore } from '../firebase/db';
+import { ScaleLoader } from 'react-spinners';
+import { db } from '../firebase';
 
 import './LeadersPage.css';
-import { ScaleLoader } from 'react-spinners';
 
 class LeadersPage extends Component {
   
@@ -47,13 +44,11 @@ class LeadersPage extends Component {
   }
 
   render() {
-    const { users } = this.props;
-
     const teamList = ( ) =>
     <div className='spoofingWillyBackground'>
         <ul>
         <div className='TeamScoreContainer'>
-        <li> <span className='label'>Bucky's visited</span> 
+        <li> <span className='label'>Mascots visited</span> 
               <span className='label'>Team Name</span> 
               <span className='label'>Partisipants</span> </li></div>
           {/* Loop through state and render each team info */}
@@ -77,8 +72,6 @@ class LeadersPage extends Component {
     );
   }
 }
-
-const authCondition = (authUser) => !!authUser;
 
 const mapStateToProps = (state) => ({
     users: state.userState.users,

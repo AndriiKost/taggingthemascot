@@ -1,22 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
-import { db } from '../firebase';
 
-import AccountImage from './AccountImage';
 import Events from './Events';
-import AuthUserContext from './AuthUserContext';
 import { PasswordForgetForm } from './PasswordForget';
 import PasswordChangeForm from './PasswordChange';
 import withAuthorization from './withAuthorization';
 import SignOutButton from './SignOut';
 
-const AccountPage = ({ authUser }) => 
+const AccountPage = ( ) => 
   <div className='gradientSection'>
     <SignOutButton />
       <h2>It's more <span className='funClass'>fun</span> to participate with your friend</h2>
       <Events />
-    {/* </div> */}
     <div className="accountSettings">
       <div className='accountSection'>
         <h4>Reset Password</h4>

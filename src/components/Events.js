@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { auth, db } from '../firebase';
+import { db } from '../firebase';
 
 const byPropKey = (propertyName, value) => () => ({
   [propertyName]: value,

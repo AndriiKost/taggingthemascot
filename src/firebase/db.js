@@ -17,19 +17,15 @@ export const doCreateUser = (uid, username, email) =>
   });
 
   export const updateScore = ( score ) =>  {
-    // Get a key for a new Post.
-    // var newScore = db.ref(`users/` + auth.currentUser.uid + '/profile/visited').push(1)
-    // console.log(newScore)
-
-  var postData = {
+  let postData = {
     date: new Date()
   };
 
   // Get a key for a new Post.
-  var newPostKey = db.ref().child('posts').push().key;
+  let newPostKey = db.ref().child('posts').push().key;
 
   // Write the new post's data simultaneously in the posts list and the user's post list.
-  var updates = {};
+  let updates = {};
   updates['users/' + auth.currentUser.uid + '/profile/visited/' + newPostKey] = postData;
 
   return db.ref().update(updates);
@@ -59,7 +55,6 @@ db.ref(`users/` + auth.currentUser.uid + '/profile/members').set({
   });
 
   export const removeBuckyFromTheUserList = (buckyID) => {
-    console.log(buckyID)
     db.ref('users/' + auth.currentUser.uid + '/profile/checklist/buckies/features/').child(buckyID).remove()
   }
 

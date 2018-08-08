@@ -58,11 +58,10 @@ class CheckinAlt extends React.Component {
         lat: el.geometry.coordinates[1],
         lng: el.geometry.coordinates[0]})
       )
-      this.state.buckies = dataArr
-      this.setState({ loadingForGeolocation: false })
+      this.setState({ buckies: dataArr, loadingForGeolocation: false })
     }
 
-    findClosestBucky = (lat1, lon1, lat2, lon2, buckyName) => {  // generally used geo measurement function
+    findClosestBucky = (lat1, lon1, lat2, lon2) => {  // generally used geo measurement function
       let R = 6378.137; // Radius of earth in KM
       let dLat = lat2 * Math.PI / 180 - lat1 * Math.PI / 180;
       let dLon = lon2 * Math.PI / 180 - lon1 * Math.PI / 180;
@@ -76,14 +75,8 @@ class CheckinAlt extends React.Component {
 
     initialCheckInHandler = () => {
       this.setState({loadingForGeolocation: true, distance: '', modalIsOpen: true})
-      // console.log('From the props -> ',this.props.lat, this.props.lng)
-      this.props.onClick().then(console.log('Call Back =>',this.props.lat, this.props.lng)).then(this.setState({checkIn: false, loadingForGeolocation: false}))
+      this.props.onClick().then(this.setState({checkIn: false, loadingForGeolocation: false}))
 
-      // console.log(this.props.lat,this.props.lng)
-        // this.setState({checkIn: true})
-        // console.log(this.state.buckies)
-        // find closest bucky
-        // const closest = this.state.buckies.reduce((lowest, cur) => {
           const closest = (!Array.isArray(this.state.buckies) || !this.state.buckies.length) 
           ? null 
           : this.state.buckies.reduce((lowest, cur) => {
@@ -94,25 +87,24 @@ class CheckinAlt extends React.Component {
             const distanceFunc = this.findClosestBucky(this.props.lat,this.props.lng, cur.lat, cur.lng, cur.id);
             // manual coordinates for testing
             // const distanceFunc = this.findClosestBucky(43.074119262953495,-89.45224463939667, cur.lat, cur.lng, cur.id);
+
             // check if lowest is same as rendered
             if (distanceFunc > lowest) {
               return lowest
             }  else {
-              this.state.buckyToRemove = parseInt(cur.id.slice(0, -1)) - 1;
-              this.state.buckyNameTagged = cur.name;
+              this.setState({ buckyToRemove: parseInt(cur.id.slice(0, -1)) - 1, buckyNameTagged: cur.name })
               return distanceFunc
             }
           } else {
             return lowest
           }
         })
-        closest ? closest < 45 ? ( db.updateScore(), db.removeBuckyFromTheUserList(this.state.buckyToRemove), this.setState({distance: 'Congratulations! You have tagged ' + this.state.buckyNameTagged + '!'}) ) : this.setState({distance: 'Can not find any Mascot near you. You are ' + closest + ' feet away'}) : null
+        closest ? closest < 45 ? ( db.updateScore(), db.removeBuckyFromTheUserList(this.state.buckyToRemove), this.setState({distance: 'Congratulations! You have tagged ' + this.state.buckyNameTagged + '!'}) ) : this.setState({distance: 'Can not find any Mascot near you. You are ' + closest + ' feet away'}) : null;
     }
 
     refreshLocation = () => {
       this.setState({loadingForGeolocation: true, distance: ''})
-      console.log('From the props -> ',this.props.lat, this.props.lng)
-      this.props.onClick().then(console.log('Call Back =>',this.props.lat, this.props.lng)).then(this.setState({checkIn: false, loadingForGeolocation: false}))
+      this.props.onClick().then(this.setState({checkIn: false, loadingForGeolocation: false}))
     }
 
   render() {
@@ -123,7 +115,6 @@ class CheckinAlt extends React.Component {
         !this.state.checkIn ? <button className="CheckIn-btn" onClick={this.initialCheckInHandler}>Check in</button> : <button onClick={this.refreshLocation}> Get New Location </button>
       : <h5>Getting location</h5>}
 
-        {/* Modal Window */}
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}

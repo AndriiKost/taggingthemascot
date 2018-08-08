@@ -7,9 +7,7 @@ import Modal from 'react-modal';
 
 import buckyIcon from '../../assets/images/icons/buckies/active.svg'
 import userMarker from '../../assets/images/icons/buckies/userMarker.png'
-
 import CheckinAlt from './CheckinAlt';
-
 
 // Styles for modal window
 const customStyles = {
@@ -46,10 +44,7 @@ constructor() {
     this.closeModal = this.closeModal.bind(this);
 }
 
-openModal(marker) {
-  this.setState({modalIsOpen: true});
-  console.log('open modal -> ',marker)
-}
+openModal() { this.setState({modalIsOpen: true}) }
 
 afterOpenModal() {
   // references are now sync'd and can be accessed.
@@ -93,7 +88,6 @@ closeModal() {
   }
 
   loadMap(defLong, defLat) {
-    console.log('loadMap()', this.state.longitude, this.state.latitude)
     if (this.props && this.props.google) { // checks to make sure that props have been passed
       const {google} = this.props; // sets props equal to google
       const maps = google.maps; // sets maps to google maps props
@@ -150,7 +144,6 @@ closeModal() {
 
   loadPosition = async () => {
     this.setState({loading: true})
-    console.log('loadPosition from Map component')
     try {
       const position = await this.getCurrentPosition();
       const { latitude, longitude } = position.coords;
@@ -167,25 +160,18 @@ closeModal() {
   };
 
   getCurrentPosition = (options = {}) => {
-    return new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(resolve, reject, options);
-      //this.loadMap(this.state.latitude, this.state.longitude);
-      
+    return new Promise((resolve, reject) => { 
+      navigator.geolocation.getCurrentPosition(resolve, reject, options); 
     });
-    
   };
 
   render() {
-    const style = { // MUST specify dimensions of the Google map or it will not work. Also works best when style is specified inside the render function and created as an object
-      width: '100%', // 90vw basically means take up 90% of the width screen. px also works.
-      height: '80vh' // 75vh similarly will take up roughly 75% of the height of the screen. px also works.
-    }
+    const style = { width: '100%', height: '70vh' }
 
-    return ( // in our return function you must return a div with ref='map' and style.
+    return (
     <div>
       <div ref="map" style={style}>
-
-        <div className='loading'><ScaleLoader color={'#fc0d1b'}  loading={this.state.loading} /></div>
+        <div className='loading'><ScaleLoader color={'#fc0d1b'} loading={this.state.loading} /></div>
           
         <Modal
           isOpen={this.state.modalIsOpen}

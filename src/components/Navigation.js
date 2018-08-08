@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import SignOutButton from './SignOut';
 import * as routes from '../constants/routes';
 
 const Navigation = ({ authUser }) =>
@@ -12,7 +11,6 @@ const Navigation = ({ authUser }) =>
 
 const NavigationAuth = () =>
   <ul>
-    {/* <li><SignOutButton /></li> */}
     <li><Link to={routes.CHECKLIST}>Checklist</Link></li>
     <li><Link to={routes.ACCOUNT}>Account</Link></li>
     <li><Link to={routes.LEADERS}>Leaders</Link></li>

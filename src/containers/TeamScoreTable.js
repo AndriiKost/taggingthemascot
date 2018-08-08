@@ -1,9 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { compose } from 'recompose';
-
-import { db, auth } from '../firebase';
-import { updateBuckyScore } from '../firebase/db';
 
 class TeamScoreTable extends Component {
 
@@ -20,7 +15,6 @@ state = {
   updateStateWithTeamData = ( users ) => {
     
     let dataArr = []
-    console.log(users)
 
     Object.keys(users).map(key => 
       // Update state with Firebase Data
@@ -32,10 +26,7 @@ state = {
     const newArray = dataArr.sort(function(a, b){
       return b.teamScore-a.teamScore
     });
-    console.log('newArray', newArray)
-
     this.state.team = newArray
-    console.log(this.state.team)
   }
 
   render() {

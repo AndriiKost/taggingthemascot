@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
-import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import withAuthorization from './withAuthorization';
 import { db } from '../firebase';
-
 import { ScaleLoader } from 'react-spinners';
 
 class BuckyCheckList extends Component {
@@ -37,35 +36,29 @@ class BuckyCheckList extends Component {
       imgFileName: el.properties.imgFileName,
       link: el.properties.link})
     ) : alert('having problems to get checklist')
-    this.state.buckies = dataArr
-    this.setState({ loading: false })
+
+    this.setState({ loading: false, buckies: dataArr })
   }
 
 
 render () {
-    const { users } = this.props;
     return (
         <div className='ChecklistPage'>
             <ul className='Checklist'>
             <div className='loading'><ScaleLoader color={'#fc0d1b'}  loading={this.state.loading} /></div>
             {this.state.buckies.map(el => {
-              let img = (el.imgFileName)
-              ? `https://deliandigital.com/wp-content/uploads/2018/06/${el.imgFileName}`
-              : null
-
             return(
             <li key={el.id}>
               <p>
-                {/* <a href={el.link}>
-                  <img src={img} width="10%" height="auto"/>
-                </a> */}
               </p>
                 <p className='Checklist-name'>{el.name}</p>  
 
                 <CopyToClipboard text={el.address}
-                    onCopy={() => {this.setState({copied: true}), setTimeout(() => {
-                      this.setState({ copied: false })
-                    }, 2000)}}>
+                    onCopy={() => {
+                      this.setState({copied: true}); 
+                      setTimeout(() => {
+                        this.setState({ copied: false })
+                      }, 2000)}}>
                 <p className='Checklist-address'>{el.address}</p>
                 </CopyToClipboard>
             </li>

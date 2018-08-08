@@ -31,7 +31,7 @@ class SignUpForm extends Component {
 
   componentDidMount() {
     db.onceGetUsers().then( snapshot => {
-      this.state.teamNames = Object.keys(snapshot.val()).map(key => snapshot.val()[key].username.toLowerCase())
+      this.setState({ teamNames: Object.keys(snapshot.val()).map(key => snapshot.val()[key].username.toLowerCase()) })
     }
    )
   }
@@ -44,7 +44,6 @@ class SignUpForm extends Component {
     } else {
       this.setState({teamNameExisting: false})
     }
-    console.log(this.state.teamNameExisting)
   }
 
   onSubmit = (event) => {

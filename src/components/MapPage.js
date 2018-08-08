@@ -3,9 +3,6 @@ import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import { GoogleApiWrapper } from 'google-maps-react'
 
-import { MAPS_API } from '../constants/keys'
-
-import AuthUserContext from './AuthUserContext';
 import withAuthorization from './withAuthorization';
 import './MapPage.css';
 
