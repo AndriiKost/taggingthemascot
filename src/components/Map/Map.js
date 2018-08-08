@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
-import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { db } from '../../firebase/index'
+import { ScaleLoader } from 'react-spinners';
+import Modal from 'react-modal';
 
 import buckyIcon from '../../assets/images/icons/buckies/active.svg'
 import userMarker from '../../assets/images/icons/buckies/userMarker.png'
-import { buckies } from '../data/index'
 
-import Checkin from '../CheckIn'
 import CheckinAlt from './CheckinAlt';
-import jsxToString from 'jsx-to-string';
 
-import Modal from 'react-modal';
-import { ScaleLoader } from 'react-spinners';
+
 // Styles for modal window
 const customStyles = {
   content : {
@@ -95,7 +93,6 @@ closeModal() {
   }
 
   loadMap(defLong, defLat) {
-    this.setState({loading: true})
     console.log('loadMap()', this.state.longitude, this.state.latitude)
     if (this.props && this.props.google) { // checks to make sure that props have been passed
       const {google} = this.props; // sets props equal to google
@@ -152,6 +149,7 @@ closeModal() {
   }
 
   loadPosition = async () => {
+    this.setState({loading: true})
     console.log('loadPosition from Map component')
     try {
       const position = await this.getCurrentPosition();
@@ -180,14 +178,14 @@ closeModal() {
   render() {
     const style = { // MUST specify dimensions of the Google map or it will not work. Also works best when style is specified inside the render function and created as an object
       width: '100%', // 90vw basically means take up 90% of the width screen. px also works.
-      height: '55vh' // 75vh similarly will take up roughly 75% of the height of the screen. px also works.
+      height: '80vh' // 75vh similarly will take up roughly 75% of the height of the screen. px also works.
     }
 
     return ( // in our return function you must return a div with ref='map' and style.
     <div>
       <div ref="map" style={style}>
-        {/* <div className='loadingMap'>loading map...</div> */}
-          <div className='loading'><ScaleLoader color={'#fc0d1b'}  loading={this.state.loading} /></div>
+
+        <div className='loading'><ScaleLoader color={'#fc0d1b'}  loading={this.state.loading} /></div>
           
         <Modal
           isOpen={this.state.modalIsOpen}
@@ -205,8 +203,7 @@ closeModal() {
             </CopyToClipboard>
             {this.state.copied ? <span className='copyBox'>Copied.</span> : null}
           <h4 className='ModalComponent' ref={subtitle => this.subtitle = subtitle}><a href={this.state.currentBucky.link}>More Info</a></h4>
-          {/* <img className='ModalComponent'
-              src={`https://deliandigital.com/wp-content/uploads/2018/06/${this.state.currentBucky.imgFileName}`} width="30%" height="auto"/> */}
+          
           <button onClick={this.closeModal}>close</button>
         </Modal>
       </div>

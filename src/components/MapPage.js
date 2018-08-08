@@ -32,5 +32,5 @@ export default compose(
     withAuthorization(authCondition),
     connect(mapStateToProps)
   )(GoogleApiWrapper({
-    apiKey: 'AIzaSyBzHOYlM9RHefAZjvPgVuZf_Bil7_UOKCA'
+    apiKey: 'AIzaSyDs53VHgTplCwfjcqPp6w10oeTEA8ry4zc'
   })(MapPage));

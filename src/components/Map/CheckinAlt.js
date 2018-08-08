@@ -1,5 +1,21 @@
 import React from 'react';
 import { db } from '../../firebase';
+import Modal from 'react-modal';
+import { ScaleLoader } from 'react-spinners';
+
+// Styles for modal window
+const customStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)'
+  }
+};
+
+Modal.setAppElement('#root');
  
 class CheckinAlt extends React.Component {
   constructor(props) {
@@ -11,8 +27,19 @@ class CheckinAlt extends React.Component {
         buckyToRemove: '',
         buckyNameTagged: '',
         buckies: [],
-        loadingForGeolocation: true
+        loadingForGeolocation: true,
+        modalIsOpen: false,
     }
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+  }
+
+  openModal() {
+    this.setState({modalIsOpen: true});
+  }
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
   }
 
     componentDidMount() {
@@ -48,11 +75,11 @@ class CheckinAlt extends React.Component {
   }
 
     initialCheckInHandler = () => {
-      this.setState({loadingForGeolocation: true, distance: ''})
-      console.log('From the props -> ',this.props.lat, this.props.lng)
+      this.setState({loadingForGeolocation: true, distance: '', modalIsOpen: true})
+      // console.log('From the props -> ',this.props.lat, this.props.lng)
       this.props.onClick().then(console.log('Call Back =>',this.props.lat, this.props.lng)).then(this.setState({checkIn: false, loadingForGeolocation: false}))
 
-      console.log(this.props.lat,this.props.lng)
+      // console.log(this.props.lat,this.props.lng)
         // this.setState({checkIn: true})
         // console.log(this.state.buckies)
         // find closest bucky
@@ -78,8 +105,8 @@ class CheckinAlt extends React.Component {
           } else {
             return lowest
           }
-        }) 
-        closest ? closest < 30 ? ( db.updateScore(), db.removeBuckyFromTheUserList(this.state.buckyToRemove), this.setState({distance: 'Congratulations! You have tagged ' + this.state.buckyNameTagged + '!'}) ) : this.setState({distance: 'Can not find any Bucky near you. You are ' + closest + ' feet away'}) : null
+        })
+        closest ? closest < 45 ? ( db.updateScore(), db.removeBuckyFromTheUserList(this.state.buckyToRemove), this.setState({distance: 'Congratulations! You have tagged ' + this.state.buckyNameTagged + '!'}) ) : this.setState({distance: 'Can not find any Mascot near you. You are ' + closest + ' feet away'}) : null
     }
 
     refreshLocation = () => {
@@ -93,10 +120,22 @@ class CheckinAlt extends React.Component {
       <div>
         
       {(!this.state.loadingForGeolocation && !this.props.loading) ?
-        !this.state.checkIn ? <button onClick={this.initialCheckInHandler}>Check in</button> : <button onClick={this.refreshLocation}> Get New Location </button>
+        !this.state.checkIn ? <button className="CheckIn-btn" onClick={this.initialCheckInHandler}>Check in</button> : <button onClick={this.refreshLocation}> Get New Location </button>
       : <h5>Getting location</h5>}
 
-      <h5>{this.state.distance}</h5>
+        {/* Modal Window */}
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          style={customStyles}
+          contentLabel="Success window modal"
+        >
+          <h3>{(!this.state.loadingForGeolocation && !this.props.loading) ? this.state.distance : 'Checking the closest Mascots'}</h3>
+          <div className="modal-loading"><ScaleLoader color={'#fc0d1b'}  loading={this.props.loading} /></div>
+          <button onClick={this.closeModal}>close</button>
+        </Modal>
+      
       </div>
     )
   }

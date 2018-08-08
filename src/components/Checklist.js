@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import withAuthorization from './withAuthorization';
-import { db, auth } from '../firebase';
-import { updateBuckyScore } from '../firebase/db';
+import { db } from '../firebase';
 
 import { ScaleLoader } from 'react-spinners';
 

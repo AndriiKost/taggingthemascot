@@ -32,7 +32,6 @@ class SignUpForm extends Component {
   componentDidMount() {
     db.onceGetUsers().then( snapshot => {
       this.state.teamNames = Object.keys(snapshot.val()).map(key => snapshot.val()[key].username.toLowerCase())
-      console.log(this.state.teamNames)
     }
    )
   }
@@ -61,7 +60,6 @@ class SignUpForm extends Component {
 
       auth.doCreateUserWithEmailAndPassword(email, passwordOne)
         .then(authUser => {
-            console.log(authUser)
             // Create a user in your own accessible Firebase Database too
             db.doCreateUser(authUser.user.uid, username, email)
         .then(() => {
@@ -107,7 +105,7 @@ class SignUpForm extends Component {
         />
         <input
           value={email}
-          onChange={event => this.setState(byPropKey('email', event.target.value))}
+          onChange={event => this.setState(byPropKey('email', event.target.value.trim()))}
           type="text"
           placeholder="Email Address"
         />
