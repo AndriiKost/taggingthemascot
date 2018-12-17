@@ -51,8 +51,7 @@ render () {
             <li key={el.id}>
               <p>
               </p>
-                <p className='Checklist-name'>{el.name}</p>  
-
+                <p className='Checklist-name'>{el.name}</p>
                 <CopyToClipboard text={el.address}
                     onCopy={() => {
                       this.setState({copied: true}); 

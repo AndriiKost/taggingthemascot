@@ -188,7 +188,7 @@ closeModal() {
               </h3>
             </CopyToClipboard>
             {this.state.copied ? <span className='copyBox'>Copied.</span> : null}
-          <h4 className='ModalComponent' ref={subtitle => this.subtitle = subtitle}><a href={this.state.currentBucky.link}>More Info</a></h4>
+          <h4 className='ModalComponent' ref={subtitle => this.subtitle = subtitle}><a href={this.state.currentBucky.link} target='blank' >More Info</a></h4>
           
           <button onClick={this.closeModal}>close</button>
         </Modal>
