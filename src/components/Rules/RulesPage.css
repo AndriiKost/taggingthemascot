@@ -1,0 +1,20 @@
+.rulesPage {
+    overflow: hidden;
+    padding: 5px;
+    background: #fff;  /* fallback for old browsers */
+    /* background-image: url('https://deliandigital.com/wp-content/uploads/2018/06/Half-Tone-Gray-90.png');
+    background-repeat: no-repeat;
+    background-size: contain; */
+    height: 95vh;
+    padding-bottom: 20%;
+}
+.rulesPage h1 {
+    text-align: center;
+}
+.rulesPage hr{
+    color: rgb(113, 17, 12);
+    width: 75%;
+}
+/* .rulesPage ol {
+    padding: 1% 2% 0% 2%;
+} */

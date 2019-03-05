@@ -1,20 +1,19 @@
 import React from 'react';
-import {
-  BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import withAuthentication from './withAuthentication';
+import withAuthentication from '../containers/withAuthentication';
 
-import Navigation from './Navigation';
-import LandingPage from './Landing';
-import SignUpPage from './SignUp';
-import SignInPage from './SignIn';
-import PasswordForgetPage from './PasswordForget';
-import LeadersPage from './LeadersPage';
-import AccountPage from './Account';
-import MapPage from './MapPage';
-import BuckyHeader from '../containers/Header';
-import RulesPage from './RulesPage';
-import Checklist from './Checklist';
+import Navigation from './Navigation/Navigation';
+import LandingPage from './Landing/Landing';
+import SignUpPage from './SignUp/SignUp';
+import SignInPage from './SignIn/SignIn';
+import PasswordForgetPage from './Account/PasswordForget';
+import LeadersPage from './Leaderboard/LeadersPage';
+import AccountPage from './Account/Account';
+import MapPage from './Map/MapPage';
+import BuckyHeader from './Header/Header';
+import RulesPage from './Rules/RulesPage';
+import Checklist from './Checklist/Checklist';
 
 import * as routes from '../constants/routes';
 

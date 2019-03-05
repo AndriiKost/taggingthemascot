@@ -1,0 +1,28 @@
+button {
+    background-color: rgba(187,31,39,0.85);
+    border: 1px solid #5A5A5A;
+    border-radius: 3px;
+    padding: 20px;
+    width: 100%;
+    color: #fff;
+}
+button:hover {
+    background-color: rgba(187,31,39,1);
+    cursor: pointer;
+}
+h5 {
+    margin-top: 10px;
+    color: darkred;
+}
+.Map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+h2.ModalComponent {
+    color: #bb1f27;
+}
+h4.ModalComponent a {
+    color: #D36E74;
+}
